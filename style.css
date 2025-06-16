@@ -518,7 +518,7 @@ img {
     backdrop-filter: blur(10px);
 }
 
-/* =========================================== 9. SECTION 3 (À PROPOS) =========================================== */
+/* =========================================== 9. SECTION 3 (Qui SOmmes NOUS ?) =========================================== */
 .wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -593,6 +593,7 @@ img {
     align-items: center;
     margin: var(--spacing-md);
     color: var(--text-dark);
+    text-align: justify;
 }
 
 /* =========================================== 10. UTILITAIRES =========================================== */
@@ -795,29 +796,68 @@ img {
 } 
 
 /* =========================================== 12. SECTION 4 =========================================== */
-
+/* PREMIER */
 .section-quatre-container {
+    background-color: var(--background-cream);
+    margin-top: var(--spacing-lg);
+    display: flex;
+    flex-direction: column;
+}
+
+.section-quatre-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    padding: 20px;
     align-items: center;
-    background-color: var(--background-cream);
+    margin: 20px 0;
 }
 
 .section-quatre-texte {
-    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: justify;
+    margin: 64px;
+    font-size: var(--font-size-body);
+    font-family: "Roboto", sans-serif;
+}
+
+.section-quatre-image {
+    display: flex;
+    justify-content: center;
 }
 
 .conteneur-image-section-quatre {
+    width: 543px;
+    height: 645px;
     border-radius: 20px;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 32px;
 }
 
 .conteneur-image-section-quatre img {
-    max-width: 50vw; /* Remplacez par la largeur souhaitée */
-    max-height: 80vh; /* Remplacez par la hauteur souhaitée */
-    width: auto;
-    height: auto;
+    width: 100%;
+    height: 100%;
+    border-radius: 50px;
+    display: block;
+    object-fit: cover;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .section-quatre-content {
+        grid-template-columns: 1fr;
+    }
+
+    .section-quatre-texte, .section-quatre-image {
+        margin: 16px;
+    }
+
+    .conteneur-image-section-quatre {
+        width: 100%;
+        height: 300px;
+    }
 }
 
