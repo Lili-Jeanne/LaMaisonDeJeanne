@@ -1,0 +1,823 @@
+/* =========================================== TABLE DES MATIÈRES ===========================================
+1. Variables CSS personnalisées
+2. Polices
+3. Reset et styles de base
+4. Animations et keyframes
+5. Header et navigation
+6. Section Hero
+7. Section 1 (Introduction)
+8. Carousel
+9. Section 3 (À propos)
+10. Utilitaires
+11. Media queries
+   =========================================== 1. VARIABLES CSS PERSONNALISÉES =========================================== */
+   :root {
+    /* Couleurs principales */
+    --primary-blue: #86C1FC;
+    --primary-blue-light: #B3D9FE;
+    --primary-blue-alpha: rgba(179, 217, 254, 0.4);
+    --accent-purple: #667eea;
+    --text-dark: #2C2C2C;
+    --text-light: #333;
+    --background-cream: rgba(255, 247, 236, 0.5);
+
+    /* Espacements */
+    --spacing-xs: 10px;
+    --spacing-sm: 15px;
+    --spacing-md: 20px;
+    --spacing-lg: 30px;
+    --spacing-xl: 40px;
+    --spacing-xxl: 50px;
+
+    /* Rayons de bordure */
+    --radius-sm: 8px;
+    --radius-md: 15px;
+    --radius-lg: 25px;
+    --radius-xl: 50px;
+
+    /* Ombres */
+    --shadow-light: 0 8px 32px rgba(0, 0, 0, 0.1);
+    --shadow-medium: 0 12px 40px rgba(0, 0, 0, 0.15);
+    --shadow-dark: 0 5px 20px rgba(0, 0, 0, 0.3);
+
+    /* Transitions */
+    --transition-fast: 0.3s ease;
+    --transition-medium: 0.4s ease;
+    --transition-slow: 0.6s ease;
+
+    /* Tailles de police responsive */
+    --font-size-hero: clamp(2rem, 5vw, 3.5rem);
+    --font-size-hero-sub: clamp(1rem, 3vw, 1.5rem);
+    --font-size-section: clamp(4vw, 9vw, 12vw);
+    --font-size-body: clamp(1rem, 2vw, 1.2rem);
+}
+
+/* =========================================== 2. POLICES =========================================== */
+@font-face {
+    font-family: 'Roboto';
+    src: url('assets/police/Roboto-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Rouge Script';
+    src: url('assets/police/RougeScript-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Road Rage';
+    src: url('assets/police/RoadRage-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* =========================================== 3. RESET ET STYLES DE BASE =========================================== */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: white;
+    min-height: 100vh;
+    overflow-x: hidden;
+    line-height: 1.6;
+    color: var(--text-dark);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* =========================================== 4. ANIMATIONS ET KEYFRAMES =========================================== */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInMobile {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* =========================================== 5. HEADER ET NAVIGATION =========================================== */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1001;
+    background: var(--primary-blue-alpha);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--radius-xl);
+    margin: var(--spacing-md) auto;
+    max-width: 1200px;
+    max-height: 85px;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    box-shadow: var(--shadow-light);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all var(--transition-fast);
+    color: var(--text-dark);
+    font-family: 'Roboto', sans-serif;
+    animation: slideIn var(--transition-slow) ease-out;
+}
+
+.header:hover {
+    box-shadow: var(--shadow-medium);
+    transform: translateY(-2px);
+}
+
+/* Logo */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.logo-icon {
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    transition: transform var(--transition-fast);
+}
+
+.logo-icon:hover {
+    animation: pulse var(--transition-slow) ease-in-out;
+}
+
+/* Navigation principale */
+.nav {
+    display: flex;
+    gap: var(--spacing-xl);
+    align-items: center;
+}
+
+.nav-item {
+    color: var(--text-dark);
+    text-decoration: none;
+    transition: all var(--transition-fast);
+    position: relative;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--radius-sm);
+}
+
+.nav-item::before {
+    content: none;
+}
+
+.nav-item:hover::before {
+    left: 0;
+}
+
+.nav-item:hover {
+    color: var(--accent-purple);
+    transform: translateY(-2px);
+}
+
+.nav-item:active {
+    transform: translateY(0);
+}
+
+/* Navigation mobile */
+.burger-menu {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    padding: var(--spacing-xs);
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-fast);
+}
+
+.burger-menu:hover {
+    background: rgba(102, 126, 234, 0.1);
+}
+
+.burger-line {
+    width: 25px;
+    height: 3px;
+    background: var(--text-light);
+    margin: 3px 0;
+    transition: all var(--transition-fast);
+    border-radius: 2px;
+}
+
+.burger-menu.active .burger-line:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+}
+
+.burger-menu.active .burger-line:nth-child(2) {
+    opacity: 0;
+}
+
+.burger-menu.active .burger-line:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
+
+.mobile-nav {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: var(--primary-blue);
+    backdrop-filter: blur(20px);
+    z-index: 1000;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-lg);
+    opacity: 0;
+    transform: translateY(-100%);
+    transition: all var(--transition-medium);
+}
+
+.mobile-nav.active {
+    display: flex;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.mobile-nav-item {
+    color: var(--text-light);
+    text-decoration: none;
+    font-weight: 600;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    transition: all var(--transition-fast);
+    opacity: 0;
+    transform: translateX(-50px);
+}
+
+.mobile-nav.active .mobile-nav-item {
+    animation: slideInMobile 0.5s ease-out forwards;
+}
+
+.mobile-nav-item:nth-child(2) { animation-delay: 0.1s; }
+.mobile-nav-item:nth-child(3) { animation-delay: 0.2s; }
+.mobile-nav-item:nth-child(4) { animation-delay: 0.3s; }
+.mobile-nav-item:nth-child(5) { animation-delay: 0.4s; }
+.mobile-nav-item:nth-child(6) { animation-delay: 0.5s; }
+
+.mobile-nav-item:hover {
+    color: var(--accent-purple);
+    background: rgba(102, 126, 234, 0.1);
+    transform: scale(1.05);
+}
+
+.close-btn {
+    position: absolute;
+    top: var(--spacing-lg);
+    right: var(--spacing-lg);
+    background: none;
+    border: none;
+    color: var(--text-light);
+    font-size: 2rem;
+    cursor: pointer;
+    padding: var(--spacing-xs);
+    border-radius: 50%;
+    transition: all var(--transition-fast);
+}
+
+.close-btn:hover {
+    background: rgba(102, 126, 234, 0.1);
+    transform: rotate(90deg);
+}
+
+/* =========================================== 6. SECTION HERO =========================================== */
+.hero-section {
+    height: 95vh;
+    background-image: url('assets/images/ext4.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+}
+
+.hero-content {
+    text-align: center;
+    color: white;
+    z-index: 2;
+    position: relative;
+    max-width: 800px;
+    padding: 0 var(--spacing-md);
+}
+
+.hero-content h1 {
+    font-size: var(--font-size-hero);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    animation: fadeInUp 1s ease-out 0.5s both;
+}
+
+.hero-content p {
+    font-size: var(--font-size-hero-sub);
+    font-weight: 300;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    animation: fadeInUp 1s ease-out 0.8s both;
+}
+
+/* =========================================== 7. SECTION 1 (INTRODUCTION) =========================================== */
+.section1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90vw;
+    height: 40vh;
+    margin: var(--spacing-lg) auto;
+    flex-shrink: 0;
+    border-radius: var(--radius-xl);
+    background: var(--background-cream);
+    box-shadow: var(--shadow-light);
+    transition: transform var(--transition-fast);
+}
+
+.section1:hover {
+    transform: translateY(-5px);
+}
+
+.section-content1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: var(--spacing-md);
+}
+
+.section1-text {
+    color: var(--primary-blue);
+    text-align: center;
+    font-family: "Rouge Script", cursive;
+    font-size: var(--font-size-section);
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.2;
+    padding: var(--spacing-md);
+    margin: var(--spacing-xs);
+}
+
+/* =========================================== 8. CAROUSEL =========================================== */
+.carousel {
+    position: relative;
+    margin: var(--spacing-lg) auto;
+    max-width: 95vw;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+}
+
+.carousel__container {
+    display: flex;
+    transition: transform var(--transition-medium) cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.carousel__slide {
+    min-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    transition: opacity var(--transition-fast);
+}
+
+.carousel__image {
+    width: auto;
+    max-width: 90%;
+    height: auto;
+    max-height: 70vh;
+    object-fit: contain;
+    border-radius: var(--radius-md);
+    transition: transform var(--transition-fast);
+}
+
+.carousel__image:hover {
+    transform: scale(1.02);
+}
+
+.carousel__indicator {
+    display: none;
+}
+
+.carousel__nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: clamp(30px, 4vw, 50px);
+    height: clamp(30px, 4vw, 50px);
+    background: rgba(255, 255, 255, 0.95);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: clamp(14px, 2vw, 20px);
+    font-weight: bold;
+    color: var(--text-light);
+    transition: all var(--transition-fast);
+    z-index: 10;
+    backdrop-filter: blur(10px);
+}
+
+.carousel__nav:hover {
+    background: white;
+    box-shadow: var(--shadow-dark);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel__nav:focus {
+    outline: 2px solid var(--accent-purple);
+    outline-offset: 2px;
+}
+
+.carousel__nav--prev {
+    left: 2vw;
+}
+
+.carousel__nav--next {
+    right: 2vw;
+}
+
+.carousel__counter {
+    position: absolute;
+    top: 2vh;
+    right: 2vw;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 0.5vh 1vw;
+    border-radius: var(--radius-md);
+    font-size: clamp(12px, 1.5vw, 16px);
+    backdrop-filter: blur(10px);
+}
+
+/* =========================================== 9. SECTION 3 (À PROPOS) =========================================== */
+.wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1fr;
+    gap: var(--spacing-md);
+    padding: var(--spacing-xl) var(--spacing-md);
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.one {
+    grid-column: 1 / 2;
+    grid-row: 1;
+    font-family: "Road Rage", cursive;
+    font-size: clamp(3rem, 6vw, 8rem);
+    color: var(--text-dark);
+    margin-top: var(--spacing-xxl);
+    margin-left: 7vw;
+    line-height: 1;
+}
+
+.two {
+    grid-column: 2 / 3;
+    grid-row: 1;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.fleche {
+    width: 55%;
+    height: auto;
+    margin-top: var(--spacing-xxl);
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+    transition: transform var(--transition-fast);
+}
+
+.fleche:hover {
+    transform: translateX(10px);
+}
+
+.three {
+    margin-top: var(--spacing-lg);
+    grid-column: 1 / 2;
+    grid-row: 2;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+}
+
+.selfie {
+    width: 100%;
+    height: auto;
+    margin-left: 1vw;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-light);
+    transition: transform var(--transition-fast);
+}
+
+.selfie:hover {
+    transform: scale(1.02);
+}
+
+.four {
+    margin-top: var(--spacing-lg);
+    grid-column: 2 / 3;
+    grid-row: 2;
+    font-size: var(--font-size-body);
+    font-family: "Roboto", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: var(--spacing-md);
+    color: var(--text-dark);
+}
+
+/* =========================================== 10. UTILITAIRES =========================================== */
+.section-content {
+    max-width: 95vw;
+    margin: 0 auto;
+    padding: 0 5vw;
+    text-align: center;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* =========================================== 11. MEDIA QUERIES =========================================== */
+
+/* Tablettes et écrans moyens */
+@media (max-width: 1024px) {
+    :root {
+        --spacing-lg: 20px;
+        --spacing-xl: 30px;
+    }
+
+    .wrapper {
+        gap: var(--spacing-sm);
+        padding: var(--spacing-lg) var(--spacing-sm);
+    }
+
+    .one {
+        font-size: clamp(2.5rem, 8vw, 6rem);
+        margin-left: 3vw;
+    }
+}
+
+/* Tablettes */
+@media (max-width: 768px) {
+    .header {
+        margin: var(--spacing-xs);
+        padding: 12px var(--spacing-md);
+        border-radius: var(--radius-lg);
+    }
+
+    .nav {
+        gap: var(--spacing-md);
+    }
+
+    .nav-item {
+        padding: var(--spacing-xs) 12px;
+    }
+
+    .hero-section {
+        height: 70vh;
+        background-attachment: scroll;
+    }
+
+    .section1 {
+        height: 20vh;
+        margin-top: var(--spacing-lg);
+    }
+
+    .section1-text {
+        font-size: clamp(3rem, 8vw, 6rem);
+    }
+
+    .carousel {
+        margin: var(--spacing-xs) auto;
+    }
+
+    .carousel__image {
+        max-height: 60vh;
+    }
+
+    .carousel__nav {
+        width: clamp(35px, 6vw, 60px);
+        height: clamp(35px, 6vw, 60px);
+        font-size: clamp(16px, 3vw, 24px);
+    }
+
+    .carousel__counter {
+        display: none;
+    }
+}
+
+/* Transition vers mobile */
+@media (max-width: 1000px) {
+    .wrapper {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        gap: var(--spacing-lg);
+    }
+
+    .one, .two, .three, .four {
+        grid-column: 1;
+        grid-row: auto;
+    }
+
+    .one {
+        margin-left: var(--spacing-md);
+        font-size: clamp(4rem, 13vw, 8rem);
+        text-align: center;
+    }
+
+    .fleche {
+        display: none;
+    }
+
+    .selfie {
+        width: 80%;
+        margin-left: 0;
+        display: block;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    .four {
+        font-size: clamp(1rem, 4vw, 1.5rem);
+        margin-top: var(--spacing-md);
+        text-align: justify;
+        padding: 0 var(--spacing-md);
+    }
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+    .nav {
+        display: none;
+    }
+
+    .burger-menu {
+        display: flex;
+    }
+
+    .header {
+        padding: var(--spacing-xs) var(--spacing-sm);
+    }
+}
+
+/* Petits mobiles */
+@media (max-width: 480px) {
+    .hero-section {
+        height: 60vh;
+    }
+
+    .carousel__image {
+        max-height: 50vh;
+    }
+
+    .carousel__nav {
+        width: clamp(40px, 8vw, 70px);
+        height: clamp(40px, 8vw, 70px);
+        font-size: clamp(18px, 4vw, 28px);
+    }
+
+    .carousel__nav--prev {
+        left: 3vw;
+    }
+
+    .carousel__nav--next {
+        right: 3vw;
+    }
+
+    .section1 {
+        height: auto;
+        min-height: 15vh;
+        padding: var(--spacing-md);
+    }
+
+    .one {
+        font-size: clamp(3rem, 12vw, 6rem);
+    }
+
+    .four {
+        font-size: clamp(0.9rem, 3.5vw, 1.2rem);
+        padding: 0 var(--spacing-sm);
+        margin-top: var(--spacing-lg);
+    }
+}
+
+/* Écrans très larges */
+@media (min-width: 1400px) {
+    .header {
+        max-width: 1400px;
+    }
+
+    .wrapper {
+        max-width: 1400px;
+    }
+
+    .section1 {
+        max-width: 1200px;
+    }
+} 
+
+/* =========================================== 12. SECTION 4 =========================================== */
+
+.section-quatre-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    padding: 20px;
+    align-items: center;
+    background-color: var(--background-cream);
+}
+
+.section-quatre-texte {
+    font-family: Arial, sans-serif;
+}
+
+.conteneur-image-section-quatre {
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.conteneur-image-section-quatre img {
+    max-width: 50vw; /* Remplacez par la largeur souhaitée */
+    max-height: 80vh; /* Remplacez par la hauteur souhaitée */
+    width: auto;
+    height: auto;
+}
+
