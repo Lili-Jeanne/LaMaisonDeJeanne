@@ -8,12 +8,12 @@
 </head>
 <body>
     <div class="mobile-nav" id="mobileNav">
-        <button class="close-btn" id="closeBtn">&times;</button>
         <a href="#" class="mobile-nav-item">GÎTE</a>
         <a href="#" class="mobile-nav-item">INFOS PRATIQUES</a>
         <a href="#" class="mobile-nav-item">TABLE D'HÔTE</a>
         <a href="#" class="mobile-nav-item">PÉRIGORD</a>
         <a href="#" class="mobile-nav-item">CONTACT</a>
+        <button class="close-btn" id="closeBtn">&times;</button>
     </div>
 
     <!-- Hero Section -->
@@ -241,27 +241,44 @@
     </section>
 
     <script>
+    // Menu management
+    document.addEventListener('DOMContentLoaded', function() {
         // Menu management
         const burgerMenu = document.getElementById('burgerMenu');
         const mobileNav = document.getElementById('mobileNav');
         const closeBtn = document.getElementById('closeBtn');
 
-        const toggleMenu = (isOpen) => {
-            burgerMenu.classList.toggle('active', isOpen);
-            mobileNav.classList.toggle('active', isOpen);
-            document.body.style.overflow = isOpen ? 'hidden' : 'auto';
+        // Fonctions pour ouvrir/fermer le menu
+        const openMenu = () => {
+            burgerMenu.classList.add('active');
+            mobileNav.classList.add('active');
+            document.body.style.overflow = 'hidden';
         };
 
-        burgerMenu.addEventListener('click', () => toggleMenu(true));
-        closeBtn.addEventListener('click', () => toggleMenu(false));
+        const closeMenu = () => {
+            burgerMenu.classList.remove('active');
+            mobileNav.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        };
+
+        // Événements du menu
+        burgerMenu.addEventListener('click', openMenu);
+        closeBtn.addEventListener('click', closeMenu);
 
         document.querySelectorAll('.mobile-nav-item').forEach(item => {
-            item.addEventListener('click', () => toggleMenu(false));
+            item.addEventListener('click', closeMenu);
         });
 
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && mobileNav.classList.contains('active')) {
-                toggleMenu(false);
+                closeMenu();
+            }
+        });
+
+        // Fermer le menu en cliquant sur le fond
+        mobileNav.addEventListener('click', (e) => {
+            if (e.target === mobileNav) {
+                closeMenu();
             }
         });
 
@@ -388,9 +405,9 @@
             }
         }
 
-        document.addEventListener('DOMContentLoaded', () => {
-            new FlexibleCarousel(document.getElementById('carousel'));
-        });
+        // Initialize carousel
+        new FlexibleCarousel(document.getElementById('carousel'));
+    });
     </script>
 </body>
 </html>

@@ -317,24 +317,35 @@ img {
     transform: scale(1.05);
 }
 
+
+
+
+
 .close-btn {
     position: absolute;
-    top: var(--spacing-lg);
-    right: var(--spacing-lg);
+    top: 30px;
+    right: 30px;
     background: none;
     border: none;
-    color: var(--text-light);
+    color: var(--text-dark);
     font-size: 2rem;
     cursor: pointer;
-    padding: var(--spacing-xs);
+    padding: 10px;
     border-radius: 50%;
     transition: all var(--transition-fast);
+    z-index: 1004;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .close-btn:hover {
-    background: rgba(102, 126, 234, 0.1);
+    background: rgba(255, 255, 255, 0.2);
     transform: rotate(90deg);
 }
+
 
 /* =========================================== 6. SECTION HERO =========================================== */
 .hero-section {
@@ -732,6 +743,7 @@ img {
 
     .burger-menu {
         display: flex;
+        z-index: 30000;
     }
 
     .header {
@@ -816,7 +828,7 @@ img {
     flex-direction: column;
     justify-content: center;
     text-align: justify;
-    margin: 64px;
+    margin: px;
     font-size: var(--font-size-body);
     font-family: "Roboto", sans-serif;
 }
@@ -860,4 +872,3 @@ img {
         height: 300px;
     }
 }
-
