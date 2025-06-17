@@ -350,7 +350,7 @@ img {
 /* =========================================== 6. SECTION HERO =========================================== */
 .hero-section {
     height: 95vh;
-    background-image: url('assets/images/ext4.jpg');
+    background-image: url('assets/images/ext3.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -864,11 +864,15 @@ img {
     }
 
     .section-quatre-texte, .section-quatre-image {
-        margin: 16px;
+        margin: 10px 64px;
     }
 
     .conteneur-image-section-quatre {
         width: 100%;
         height: 300px;
+    }
+
+    .four{
+        font-size: var(--font-size-body);
     }
 }
