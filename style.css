@@ -828,7 +828,7 @@ img {
     flex-direction: column;
     justify-content: center;
     text-align: justify;
-    margin: px;
+    margin: 64px;
     font-size: var(--font-size-body);
     font-family: "Roboto", sans-serif;
 }
