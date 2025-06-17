@@ -13,7 +13,6 @@
         <a href="#" class="mobile-nav-item">TABLE D'HÔTE</a>
         <a href="#" class="mobile-nav-item">PÉRIGORD</a>
         <a href="#" class="mobile-nav-item">CONTACT</a>
-        <button class="close-btn" id="closeBtn">&times;</button>
     </div>
 
     <!-- Hero Section -->
@@ -241,173 +240,162 @@
     </section>
 
     <script>
-    // Menu management
-    document.addEventListener('DOMContentLoaded', function() {
-        // Menu management
-        const burgerMenu = document.getElementById('burgerMenu');
-        const mobileNav = document.getElementById('mobileNav');
-        const closeBtn = document.getElementById('closeBtn');
-
-        // Fonctions pour ouvrir/fermer le menu
-        const openMenu = () => {
-            burgerMenu.classList.add('active');
-            mobileNav.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        };
-
-        const closeMenu = () => {
-            burgerMenu.classList.remove('active');
-            mobileNav.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        };
-
-        // Événements du menu
-        burgerMenu.addEventListener('click', openMenu);
-        closeBtn.addEventListener('click', closeMenu);
-
-        document.querySelectorAll('.mobile-nav-item').forEach(item => {
-            item.addEventListener('click', closeMenu);
-        });
-
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && mobileNav.classList.contains('active')) {
-                closeMenu();
-            }
-        });
-
-        // Fermer le menu en cliquant sur le fond
-        mobileNav.addEventListener('click', (e) => {
-            if (e.target === mobileNav) {
-                closeMenu();
-            }
-        });
-
-        // Header scroll effect
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('.header');
-            const scrolled = window.pageYOffset;
-        });
-
-        // Enhanced hover effects
-        document.querySelectorAll('.nav-item').forEach(item => {
-            item.addEventListener('mouseenter', function() {
-                this.style.boxShadow = '0 4px 15px rgba(102, 126, 234, 0.3)';
+        document.addEventListener('DOMContentLoaded', function() {
+            const burgerMenu = document.getElementById('burgerMenu');
+            const mobileNav = document.getElementById('mobileNav');
+    
+            const toggleMenu = () => {
+                burgerMenu.classList.toggle('active');
+                mobileNav.classList.toggle('active');
+                document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : 'auto';
+            };
+    
+            burgerMenu.addEventListener('click', (e) => {
+                e.stopPropagation();
+                toggleMenu();
             });
-
-            item.addEventListener('mouseleave', function() {
-                this.style.boxShadow = 'none';
+    
+            document.querySelectorAll('.mobile-nav-item').forEach(item => {
+                item.addEventListener('click', toggleMenu);
             });
-        });
-
-        // Carousel
-        class FlexibleCarousel {
-            constructor(element) {
-                this.carousel = element;
-                this.container = element.querySelector('#carouselContainer');
-                this.slides = element.querySelectorAll('.carousel__slide');
-                this.prevBtn = element.querySelector('#prevBtn');
-                this.nextBtn = element.querySelector('#nextBtn');
-                this.indicatorsContainer = element.querySelector('#indicators');
-                this.currentSlideElement = element.querySelector('#currentSlide');
-                this.totalSlidesElement = element.querySelector('#totalSlides');
-
-                this.currentSlide = 0;
-                this.totalSlides = this.slides.length;
-
-                this.init();
-            }
-
-            init() {
-                this.createIndicators();
-                this.updateCounter();
-                this.updateCarousel();
-
-                this.prevBtn.addEventListener('click', () => this.prevSlide());
-                this.nextBtn.addEventListener('click', () => this.nextSlide());
-
-                this.addTouchSupport();
-                this.addKeyboardSupport();
-            }
-
-            createIndicators() {
-                this.indicatorsContainer.innerHTML = '';
-                for (let i = 0; i < this.totalSlides; i++) {
-                    const indicator = document.createElement('button');
-                    indicator.classList.add('carousel__indicator');
-                    if (i === 0) indicator.classList.add('carousel__indicator--active');
-                    indicator.addEventListener('click', () => this.goToSlide(i));
-                    this.indicatorsContainer.appendChild(indicator);
+    
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && mobileNav.classList.contains('active')) {
+                    toggleMenu();
                 }
-                this.indicators = this.indicatorsContainer.querySelectorAll('.carousel__indicator');
-            }
-
-            updateCarousel() {
-                const translateX = -this.currentSlide * 100;
-                this.container.style.transform = `translateX(${translateX}%)`;
-
-                this.indicators.forEach((indicator, index) => {
-                    indicator.classList.toggle('carousel__indicator--active', index === this.currentSlide);
+            });
+    
+            mobileNav.addEventListener('click', (e) => {
+                if (e.target === mobileNav) {
+                    toggleMenu();
+                }
+            });
+    
+            window.addEventListener('scroll', () => {
+                const header = document.querySelector('.header');
+                const scrolled = window.pageYOffset;
+            });
+    
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    this.style.boxShadow = '0 4px 15px rgba(102, 126, 234, 0.3)';
                 });
-
-                this.updateCounter();
-            }
-
-            updateCounter() {
-                this.currentSlideElement.textContent = this.currentSlide + 1;
-                this.totalSlidesElement.textContent = this.totalSlides;
-            }
-
-            nextSlide() {
-                this.currentSlide = (this.currentSlide + 1) % this.totalSlides;
-                this.updateCarousel();
-            }
-
-            prevSlide() {
-                this.currentSlide = (this.currentSlide - 1 + this.totalSlides) % this.totalSlides;
-                this.updateCarousel();
-            }
-
-            goToSlide(slideIndex) {
-                this.currentSlide = slideIndex;
-                this.updateCarousel();
-            }
-
-            addTouchSupport() {
-                let startX = 0;
-                let endX = 0;
-
-                this.carousel.addEventListener('touchstart', (e) => {
-                    startX = e.touches[0].clientX;
+    
+                item.addEventListener('mouseleave', function() {
+                    this.style.boxShadow = 'none';
                 });
-
-                this.carousel.addEventListener('touchend', (e) => {
-                    endX = e.changedTouches[0].clientX;
-                    const diff = startX - endX;
-
-                    if (Math.abs(diff) > 50) {
-                        if (diff > 0) {
-                            this.nextSlide();
-                        } else {
-                            this.prevSlide();
+            });
+    
+            // Carousel
+            class FlexibleCarousel {
+                constructor(element) {
+                    this.carousel = element;
+                    this.container = element.querySelector('#carouselContainer');
+                    this.slides = element.querySelectorAll('.carousel__slide');
+                    this.prevBtn = element.querySelector('#prevBtn');
+                    this.nextBtn = element.querySelector('#nextBtn');
+                    this.indicatorsContainer = element.querySelector('#indicators');
+                    this.currentSlideElement = element.querySelector('#currentSlide');
+                    this.totalSlidesElement = element.querySelector('#totalSlides');
+    
+                    this.currentSlide = 0;
+                    this.totalSlides = this.slides.length;
+    
+                    this.init();
+                }
+    
+                init() {
+                    this.createIndicators();
+                    this.updateCounter();
+                    this.updateCarousel();
+    
+                    this.prevBtn.addEventListener('click', () => this.prevSlide());
+                    this.nextBtn.addEventListener('click', () => this.nextSlide());
+    
+                    this.addTouchSupport();
+                    this.addKeyboardSupport();
+                }
+    
+                createIndicators() {
+                    this.indicatorsContainer.innerHTML = '';
+                    for (let i = 0; i < this.totalSlides; i++) {
+                        const indicator = document.createElement('button');
+                        indicator.classList.add('carousel__indicator');
+                        if (i === 0) indicator.classList.add('carousel__indicator--active');
+                        indicator.addEventListener('click', () => this.goToSlide(i));
+                        this.indicatorsContainer.appendChild(indicator);
+                    }
+                    this.indicators = this.indicatorsContainer.querySelectorAll('.carousel__indicator');
+                }
+    
+                updateCarousel() {
+                    const translateX = -this.currentSlide * 100;
+                    this.container.style.transform = `translateX(${translateX}%)`;
+    
+                    this.indicators.forEach((indicator, index) => {
+                        indicator.classList.toggle('carousel__indicator--active', index === this.currentSlide);
+                    });
+    
+                    this.updateCounter();
+                }
+    
+                updateCounter() {
+                    this.currentSlideElement.textContent = this.currentSlide + 1;
+                    this.totalSlidesElement.textContent = this.totalSlides;
+                }
+    
+                nextSlide() {
+                    this.currentSlide = (this.currentSlide + 1) % this.totalSlides;
+                    this.updateCarousel();
+                }
+    
+                prevSlide() {
+                    this.currentSlide = (this.currentSlide - 1 + this.totalSlides) % this.totalSlides;
+                    this.updateCarousel();
+                }
+    
+                goToSlide(slideIndex) {
+                    this.currentSlide = slideIndex;
+                    this.updateCarousel();
+                }
+    
+                addTouchSupport() {
+                    let startX = 0;
+                    let endX = 0;
+    
+                    this.carousel.addEventListener('touchstart', (e) => {
+                        startX = e.touches[0].clientX;
+                    });
+    
+                    this.carousel.addEventListener('touchend', (e) => {
+                        endX = e.changedTouches[0].clientX;
+                        const diff = startX - endX;
+    
+                        if (Math.abs(diff) > 50) {
+                            if (diff > 0) {
+                                this.nextSlide();
+                            } else {
+                                this.prevSlide();
+                            }
                         }
-                    }
-                });
+                    });
+                }
+    
+                addKeyboardSupport() {
+                    document.addEventListener('keydown', (e) => {
+                        if (e.key === 'ArrowLeft') {
+                            this.prevSlide();
+                        } else if (e.key === 'ArrowRight') {
+                            this.nextSlide();
+                        }
+                    });
+                }
             }
-
-            addKeyboardSupport() {
-                document.addEventListener('keydown', (e) => {
-                    if (e.key === 'ArrowLeft') {
-                        this.prevSlide();
-                    } else if (e.key === 'ArrowRight') {
-                        this.nextSlide();
-                    }
-                });
-            }
-        }
-
-        // Initialize carousel
-        new FlexibleCarousel(document.getElementById('carousel'));
-    });
-    </script>
+    
+            // Initialize carousel
+            new FlexibleCarousel(document.getElementById('carousel'));
+        });
+        </script>
+    
 </body>
 </html>
