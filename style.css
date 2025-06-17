@@ -20,6 +20,9 @@
     --text-dark: #2C2C2C;
     --text-light: #333;
     --background-cream: rgba(255, 247, 236, 0.5);
+    --background-purple: rgba(205, 37, 39, 0.75);
+    --background-green: rgba(108, 183, 86, 0.75);
+    --background-gray: rgba(0, 0, 0, 0.75);
 
     /* Espacements */
     --spacing-xs: 10px;
@@ -806,7 +809,6 @@ img {
         max-width: 1200px;
     }
 } 
-
 /* =========================================== 12. SECTION 4 =========================================== */
 /* PREMIER */
 .section-quatre-container {
@@ -846,7 +848,7 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 32px;
+    margin: 64px;
 }
 
 .conteneur-image-section-quatre img {
@@ -861,18 +863,114 @@ img {
 @media (max-width: 768px) {
     .section-quatre-content {
         grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column;
+        margin: 20px 64px;
     }
 
-    .section-quatre-texte, .section-quatre-image {
-        margin: 10px 64px;
+    /* Force l'image à apparaître toujours en premier */
+    .section-quatre-image {
+        order: 1;
+        margin: 10px 20px;
+    }
+
+    /* Force le texte à apparaître toujours en second */
+    .section-quatre-texte {
+        order: 2;
+        margin: 10px 20px;
     }
 
     .conteneur-image-section-quatre {
         width: 100%;
         height: 300px;
+        margin: 0;
     }
 
-    .four{
+    .four {
         font-size: var(--font-size-body);
+    }
+}
+
+
+
+/* =========================================== 12. SECTION 5 =========================================== */
+/* Partie 1*/
+.section5-content1 {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr;
+    margin: var(--spacing-xl) 64px;
+    height: 688px;
+    margin-top: 120px;
+}
+
+.section5_1_1 {
+    border-radius: 50px;
+    margin: var(--spacing-lg);
+    display: flex;
+    background-color: var(--background-cream);
+    padding: var(--spacing-lg);
+    grid-row: 1;
+    grid-column: 1 / 2;
+}
+
+.section5_1_2 {
+    margin: var(--spacing-lg);
+    display: flex;
+    background-color: var(--background-gray);
+    padding: var(--spacing-lg);
+    grid-row: 1;
+    grid-column: 2 / 3;
+    border-radius: 50px;
+}
+
+/* Partie 2 */
+.section5-content2 {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: 1fr;
+    height: 688px;
+    margin-top: var(--spacing-xl);
+    margin: var(--spacing-lg) 64px;
+}
+
+.section5_2_1 {
+    border-radius: 50px;
+    margin: var(--spacing-lg);
+    display: flex;
+    background-color: var(--background-purple);
+    padding: var(--spacing-lg);
+    grid-row: 1;
+    grid-column: 1 / 2;
+}
+
+.section5_2_2 {
+    border-radius: 50px;
+    margin: var(--spacing-lg);
+    display: flex;
+    background-color: var(--background-green);
+    padding: var(--spacing-lg);
+    grid-row: 1;
+    grid-column: 2 / 3;
+}
+
+/* Media Queries pour les écrans de téléphone */
+@media (max-width: 768px) {
+    .section5-content1, .section5-content2 {
+        display: block; /* Changement de grid à block pour un empilement vertical */
+        margin: var(--spacing-lg) 20px;
+    }
+    
+    .section5_1_1, .section5_1_2, .section5_2_1, .section5_2_2 {
+                height: 688px;
+        grid-row: unset;
+        grid-column: unset;
+        margin: var(--spacing-lg) 0; /* Suppression des marges latérales */
+        margin-bottom: var(--spacing-lg); /* Espacement entre les éléments */
+    }
+    
+    /* Suppression de la marge du dernier élément */
+    .section5_2_2 {
+        margin-bottom: 0;
     }
 }
