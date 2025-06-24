@@ -894,14 +894,43 @@ img {
 
 
 /* =========================================== 12. SECTION 5 =========================================== */
+
+/* Partie 0*/
+.section0-content {
+    display: grid;
+    grid-template-columns: 1.5fr 2fr;
+    grid-template-rows: 1fr;
+    margin: var(--spacing-xl) 64px;
+}
+
+.section0_1_1{
+    display: flex;
+    grid-row: 1;
+    grid-column: 1 / 2;
+    justify-content: center;
+    color: var(--Bleu, #86C1FC);
+    font-family: "Road Rage";
+    font-size: 10vw;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    align-items: center;
+}
+
+.carte-perigord {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    margin: 0 auto;
+}
 /* Partie 1*/
 .section5-content1 {
     display: grid;
     grid-template-columns: 2fr 1fr;
     grid-template-rows: 1fr;
-    margin: var(--spacing-xl) 64px;
+    margin: 10px 64px;
     height: 688px;
-    margin-top: 120px;
 }
 
 .section5_1_1 {
@@ -962,7 +991,7 @@ img {
     }
     
     .section5_1_1, .section5_1_2, .section5_2_1, .section5_2_2 {
-                height: 688px;
+        height: 688px;
         grid-row: unset;
         grid-column: unset;
         margin: var(--spacing-lg) 0; /* Suppression des marges latérales */
@@ -972,5 +1001,112 @@ img {
     /* Suppression de la marge du dernier élément */
     .section5_2_2 {
         margin-bottom: 0;
+    }
+}
+
+
+
+
+/* =========================================== 13. SECTION 7 =========================================== */
+.section7-container {
+    max-width: 90%;
+    margin: auto;
+    background: white;
+    padding: 5%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+}
+
+.section7-title {
+    text-align: start;
+    color: #333;
+    font-family: "Road Rage";
+    font-size: 8vw;
+}
+
+.section7-section {
+    margin-bottom: 5%;
+}
+
+.section7-subtitle {
+    border-bottom: 2px solid #eee;
+    padding-bottom: 2.5%;
+}
+
+.section7-map-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-bottom: 5%;
+}
+
+.section7-map-image {
+    width: 100%;
+    max-width: 35%;
+    margin: 2.5%;
+}
+
+.section7-contact-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.section7-contact-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2.5%;
+    margin-top: 20px;
+}
+
+.section7-contact-icon {
+    margin-right: 2.5%;
+    width: 10%;
+    max-width: 30px;
+}
+
+.custom-section7 {
+    margin: 8vh 8vw;
+}
+
+/* Media Queries for different screen sizes */
+@media screen and (max-width: 768px) {
+    .section7-container {
+        max-width: 95%;
+        padding: 3%;
+    }
+
+    .section7-title {
+        font-size: 10vw;
+    }
+
+    .section7-map-image {
+        width: 100%;
+        max-width: 100%;
+        margin: 5% 0;
+    }
+
+    .custom-section7 {
+        margin: 5vh 5vw;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .section7-container {
+        max-width: 100%;
+        padding: 2%;
+    }
+
+    .section7-title {
+        font-size: 12vw;
+    }
+
+    .section7-map-image {
+        width: 100%;
+        max-width: 100%;
+        margin: 5% 0;
+    }
+
+    .custom-section7 {
+        margin: 3vh 3vw;
     }
 }
