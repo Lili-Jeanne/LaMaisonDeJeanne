@@ -572,12 +572,11 @@ img {
 }
 
 .three {
-    margin-top: var(--spacing-lg);
     grid-column: 1 / 2;
     grid-row: 2;
     display: flex;
     justify-content: flex-start;
-    align-items: flex-end;
+    align-items: center;
 }
 
 .selfie {
