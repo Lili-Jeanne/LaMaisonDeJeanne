@@ -18,6 +18,7 @@
     --primary-blue-alpha: rgba(179, 217, 254, 0.4);
     --accent-purple: #667eea;
     --text-dark: #2C2C2C;
+    --text-white: #ffffff;
     --text-light: #333;
     --background-cream: rgba(255, 247, 236, 0.5);
     --background-purple: rgba(205, 37, 39, 0.75);
@@ -920,7 +921,7 @@ img {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 80%;
+    width: 70%;
     margin: 0 auto;
 }
 /* Partie 1*/
@@ -1108,4 +1109,21 @@ img {
     .custom-section7 {
         margin: 3vh 3vw;
     }
+}
+
+
+.titre_perigordg{
+    font-family: "Rouge Script";
+    font-size: 3vw;
+    color: var(--text-dark);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.titre_perigordp{
+    font-family: "Rouge Script";
+    font-size: 3vw;
+    color: var(--text-white);
+    text-align: center;
+    margin-bottom: 20px;
 }
