@@ -893,17 +893,17 @@ img {
 
 
 
-/* =========================================== 12. SECTION 5 =========================================== */
+/* =========================================== SECTION 5: PERIGORD =========================================== */
 
-/* Partie 0*/
-.section0-content {
+/* Section 5 - Introduction */
+.section5-intro-container {
     display: grid;
     grid-template-columns: 1.5fr 2fr;
     grid-template-rows: 1fr;
     margin: var(--spacing-xl) 64px;
 }
 
-.section0_1_1{
+.section5-intro-title {
     display: flex;
     grid-row: 1;
     grid-column: 1 / 2;
@@ -917,15 +917,16 @@ img {
     align-items: center;
 }
 
-.carte-perigord {
+.section5-perigord-map {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 70%;
     margin: 0 auto;
 }
-/* Partie 1*/
-.section5-content1 {
+
+/* Section 5 - Content Section One */
+.section5-content-one {
     display: grid;
     grid-template-columns: 2fr 1fr;
     grid-template-rows: 1fr;
@@ -933,7 +934,7 @@ img {
     height: 688px;
 }
 
-.section5_1_1 {
+.section5-cream-panel {
     border-radius: 50px;
     margin: var(--spacing-lg);
     display: flex;
@@ -943,7 +944,7 @@ img {
     grid-column: 1 / 2;
 }
 
-.section5_1_2 {
+.section5-gray-panel {
     margin: var(--spacing-lg);
     display: flex;
     background-color: var(--background-gray);
@@ -953,8 +954,8 @@ img {
     border-radius: 50px;
 }
 
-/* Partie 2 */
-.section5-content2 {
+/* Section 5 - Content Section Two */
+.section5-content-two {
     display: grid;
     grid-template-columns: 1fr 2fr;
     grid-template-rows: 1fr;
@@ -963,7 +964,7 @@ img {
     margin: var(--spacing-lg) 64px;
 }
 
-.section5_2_1 {
+.section5-purple-panel {
     border-radius: 50px;
     margin: var(--spacing-lg);
     display: flex;
@@ -973,7 +974,7 @@ img {
     grid-column: 1 / 2;
 }
 
-.section5_2_2 {
+.section5-green-panel {
     border-radius: 50px;
     margin: var(--spacing-lg);
     display: flex;
@@ -983,23 +984,53 @@ img {
     grid-column: 2 / 3;
 }
 
-/* Media Queries pour les écrans de téléphone */
+.section5-dark-text-title {
+    font-family: "Rouge Script";
+    font-size: 4vw;
+    color: var(--text-dark);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.section5-white-text-title {
+    font-family: "Rouge Script";
+    font-size: 4vw;
+    color: var(--text-white);
+    text-align: center;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.section5-left-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.section5-centered-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* Section 5 - Media Queries for phone screens */
 @media (max-width: 768px) {
-    .section5-content1, .section5-content2 {
-        display: block; /* Changement de grid à block pour un empilement vertical */
+    .section5-content-one, .section5-content-two {
+        display: block;
         margin: var(--spacing-lg) 20px;
     }
-    
-    .section5_1_1, .section5_1_2, .section5_2_1, .section5_2_2 {
+
+    .section5-cream-panel, .section5-gray-panel, .section5-purple-panel, .section5-green-panel {
         height: 688px;
         grid-row: unset;
         grid-column: unset;
-        margin: var(--spacing-lg) 0; /* Suppression des marges latérales */
-        margin-bottom: var(--spacing-lg); /* Espacement entre les éléments */
+        margin: var(--spacing-lg) 0;
+        margin-bottom: var(--spacing-lg);
     }
-    
-    /* Suppression de la marge du dernier élément */
-    .section5_2_2 {
+
+    .section5-green-panel {
         margin-bottom: 0;
     }
 }
@@ -1111,19 +1142,3 @@ img {
     }
 }
 
-
-.titre_perigordg{
-    font-family: "Rouge Script";
-    font-size: 3vw;
-    color: var(--text-dark);
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.titre_perigordp{
-    font-family: "Rouge Script";
-    font-size: 3vw;
-    color: var(--text-white);
-    text-align: center;
-    margin-bottom: 20px;
-}
