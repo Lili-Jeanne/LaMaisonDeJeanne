@@ -579,7 +579,7 @@ img {
     grid-column: 1 / 2;
     grid-row: 2;
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
 }
 
@@ -830,6 +830,7 @@ img {
     flex-direction: column;
     justify-content: center;
     text-align: justify;
+    justify-content: center;
     margin: 64px;
     font-size: var(--font-size-body);
     font-family: "Roboto", sans-serif;
