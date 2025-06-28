@@ -8,11 +8,11 @@
 </head>
 <body>
     <div class="mobile-nav" id="mobileNav">
-        <a href="#" class="mobile-nav-item">GÎTE</a>
-        <a href="#" class="mobile-nav-item">INFOS PRATIQUES</a>
-        <a href="#" class="mobile-nav-item">TABLE D'HÔTE</a>
-        <a href="#" class="mobile-nav-item">PÉRIGORD</a>
-        <a href="#" class="mobile-nav-item">CONTACT</a>
+        <a href="#section1" class="mobile-nav-item">GÎTE</a>
+        <a href="#table_hote" class="mobile-nav-item">TABLE D'HÔTE</a>
+        <a href="#perigord" class="mobile-nav-item">PÉRIGORD</a>
+        <a href="#infos_pratiques" class="mobile-nav-item">INFOS PRATIQUES</a>
+        <a href="#contact" class="mobile-nav-item">CONTACT</a>
     </div>
 
     <!-- Hero Section -->
@@ -26,17 +26,17 @@
         <div class="logo">
             <div class="logo-icon">
                 <div class="house-icon">
-                    <img src="assets/images/Group 1.svg" alt="Logo">
+                    <a href="#"> <img src="assets/images/Group 1.svg" alt="logo"></a>
                 </div>
             </div>
         </div>
 
         <nav class="nav">
-            <a href="#" class="nav-item">GÎTE</a>
-            <a href="#" class="nav-item">INFOS PRATIQUES</a>
-            <a href="#" class="nav-item">TABLE D'HÔTE</a>
-            <a href="#" class="nav-item">PÉRIGORD</a>
-            <a href="#" class="nav-item">CONTACT</a>
+            <a href="#section1" class="nav-item">GÎTE</a>
+            <a href="#table_hote" class="nav-item">TABLE D'HÔTE</a>
+            <a href="#perigord" class="nav-item">PÉRIGORD</a>
+            <a href="#infos_pratiques" class="nav-item">INFOS PRATIQUES</a>
+            <a href="#contact" class="nav-item">CONTACT</a>
         </nav>
 
         <div class="burger-menu" id="burgerMenu">
@@ -47,13 +47,14 @@
     </header>
 
     <!-- Section 1 Titre -->
-    <section class="custom-section">
+    <section class="custom-section" id="section1">
         <div class="section-content1">
                 <p class="section1-text">La maison de Jeanne</p>
         </div>
     </section>
 
     <!-- Section 2 Carousel -->
+
     <section class="custom-section">
         <div class="carousel" id="carousel">
             <div class="carousel__container" id="carouselContainer">
@@ -216,7 +217,7 @@
         </div>
 
         <!-- Quatrième bloc -->
-        <div class="section-quatre-content">
+        <div class="section-quatre-content" id="table_hote">
             <div class="section-quatre-image">
                 <div class="conteneur-image-section-quatre">
                     <img src="assets/images/table-pleine-de-nourriture-et-de-chaises.jpg" alt="Image">
@@ -234,41 +235,60 @@
 </section>
 
 
-<!-- Section 5 - Périgord -->
-<section class="section5">
-    <!-- Partie 0 -->
-    <div class="section5-intro-container">
-        <div class="section5-intro-title">
-            <p>Notre Périgord</p>
+<!-- Content Section One -->
+<div class="section5-content-one">
+    <!-- Périgord Blanc -->
+    <div class="section5-cream-panel">
+        <div class="section5-left-column">
+            <h1 class="section5-dark-text-title">Périgord Blanc</h1>
+            <p class="section5-centered-text">Le Périgord Blanc est le pays de la pierre blanche, des bastides et des châteaux. Il est situé autour de Périgueux, la préfecture de la Dordogne.</p>
         </div>
-        <div class="section5-intro-map">
-            <img src="assets/images/Carte-Périgord.png" alt="Carte-Périgord" class="section5-perigord-map">
-        </div>
-    </div>
-    <div class="section5-content-one">
-        <div class="section5-cream-panel">
-            <div class="section5-left-column">
-                <h1 class="section5-dark-text-title">Périgord Blanc</h1>
-                <p class="section5-centered-text">Le Périgord Blanc est le pays de la pierre blanche, des bastides et des châteaux. Il est situé autour de Périgueux, la préfecture de la Dordogne.</p>
-            </div>
-            <div class="section5-cream-panel-right">
-                <img src="assets/images/AHE.png">
-            </div>
-        </div>
-        <div class="section5-gray-panel">
-            <h1 class="section5-white-text-title">Périgord Noir</h1>
+        <div class="section5-panel-image">
+            <img src="assets/images/perigord-blanc.jpg" alt="Architecture du Périgord Blanc">
         </div>
     </div>
-    <div class="section5-content-two">
-        <div class="section5-purple-panel">
-            <h1 class="section5-white-text-title">Périgord Pourpre</h1>
-        </div>
-        <div class="section5-green-panel">
-            <h1 class="section5-dark-text-title">Périgord Vert</h1>
-        </div>
-    </div>
-</section>
 
+    <!-- Périgord Noir -->
+    <div class="section5-gray-panel">
+        <div class="section5-panel-content">
+            <h1 class="section5-white-text-title">Périgord Noir</h1>
+            <div class="section5-panel-image">
+                <img src="assets/images/perigord-noir.jpg" alt="Paysage du Périgord Noir">
+            </div>
+            <p class="section5-panel-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis consequat tortor sit amet eleifend cursus.</p>
+        </div>
+    </div>
+</div>
+
+<!-- Content Section Two -->
+<div class="section5-content-two">
+    <!-- Périgord Pourpre -->
+    <div class="section5-purple-panel">
+        <div class="section5-panel-content">
+            <h1 class="section5-white-text-title">Périgord Pourpre</h1>
+            <div class="section5-panel-image">
+                <img src="assets/images/perigord-pourpre.jpg" alt="Vignobles du Périgord Pourpre">
+            </div>
+            <p class="section5-panel-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis consequat tortor sit amet eleifend cursus.</p>
+        </div>
+    </div>
+
+    <!-- Périgord Vert -->
+    <div class="section5-green-panel">
+        <div class="section5-left-column">
+            <h1 class="section5-dark-text-title">Périgord Vert</h1>
+            <p class="section5-centered-text">Périgord vert car il est jonché de prairies, de forêts et de verdure.
+                Brantôme, la Venise verte avec sa magnifique abbaye bénédictine. Jumilhac-le-Grand et son magnifique château.
+                Saint Pardou de Mareuil et ses grottes aménagées du Moyen-Age, le charme pitoresquede Saint-Jean de Côle, très beau village médiévale, le marché d'Excideuil et son superbe château. Bourdeil, charmant village au bord de la Drône.
+                La grotte de Villars avec des peintures préhistoriques, originales, la magnifique et ancienne forge de Savignac Lédrier, la papeterie de Vaux. 
+                Le Périgord vert compte de très nombreux chemins de randonnées.
+            </p>
+        </div>
+        <div class="section5-panel-image">
+            <img src="assets/images/perigord-vert.jpg" alt="Nature du Périgord Vert">
+        </div>
+    </div>
+</div>
 
     <!-- Section 6 -->
     <section class="custom-section">
@@ -279,7 +299,7 @@
     </section>
 
     <!-- Section 7 -->
-    <section class="custom-section7">
+    <section class="custom-section7" id="infos_pratiques">
         <h1 class="section7-title">Informations pratiques :</h1>
 
         <div class="section7-section">
@@ -296,7 +316,7 @@
             <p class="section7-text">Merci de nous contacter pour toute demande de réservation ou de tarifs.</p>
         </div>
 
-        <div class="section7-section">
+        <div class="section7-section" id="contact">
             <h2 class="section7-subtitle">Nous contacter :</h2>
             <div class="section7-contact-info">
                 <div class="section7-contact-item">

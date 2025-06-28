@@ -897,6 +897,11 @@ img {
 /* =========================================== SECTION 5: PERIGORD =========================================== */
 
 /* Section 5 - Introduction */
+
+.section5-purple-panel{
+    font-family: "Robotto";
+}
+
 .section5-intro-container {
     display: grid;
     grid-template-columns: 1.5fr 2fr;
@@ -973,6 +978,7 @@ img {
     padding: var(--spacing-lg);
     grid-row: 1;
     grid-column: 1 / 2;
+    text-align: center;
 }
 
 .section5-green-panel {
@@ -982,6 +988,7 @@ img {
     background-color: var(--background-green);
     padding: var(--spacing-lg);
     grid-row: 1;
+    text-align: flex-start;
     grid-column: 2 / 3;
 }
 
@@ -997,10 +1004,10 @@ img {
     font-family: "Rouge Script";
     font-size: 4vw;
     color: var(--text-white);
-    text-align: center;
+    text-align: flex-start;
     margin-bottom: 20px;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     width: 100%;
 }
 
@@ -1013,7 +1020,8 @@ img {
     display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center;
+    text-align: justify;
+    font-family: "Roboto";
 }
 
 /* Section 5 - Media Queries for phone screens */
@@ -1038,6 +1046,84 @@ img {
 
 
 
+
+
+
+/* Styles pour les images dans les panneaux */
+.section5-panel-image {
+    width: 180px;
+    height: 240px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+}
+
+.section5-panel-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.section5-panel-image:hover {
+    transform: scale(1.05);
+}
+
+/* Ajustements pour les panneaux avec images */
+.section5-cream-panel {
+    gap: 20px;
+    align-items: center;
+}
+
+.section5-gray-panel {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.section5-purple-panel {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.section5-green-panel {
+    gap: 20px;
+    align-items: center;
+}
+
+/* Contenu spécifique pour les panneaux avec images */
+.section5-panel-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    text-align: center;
+}
+
+.section5-panel-text {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text-white);
+    text-align: center;
+}
+
+/* Ajustements responsive pour les images */
+@media (max-width: 768px) {
+    .section5-panel-image {
+        width: 150px;
+        height: 200px;
+    }
+    
+    .section5-cream-panel, .section5-gray-panel, .section5-purple-panel, .section5-green-panel {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
 
 /* =========================================== 13. SECTION 7 =========================================== */
 .section7-container {
