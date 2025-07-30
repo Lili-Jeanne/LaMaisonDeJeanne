@@ -895,8 +895,13 @@ img {
 
 
 /* =========================================== SECTION 5: PERIGORD =========================================== */
+/* =========================================== 
+   SECTION 5: PERIGORD - VERSION COMPLÈTE CORRIGÉE
+   =========================================== */
 
-/* Section 5 - Introduction */
+/* ===================================
+   STYLES DE BASE (DESKTOP)
+   =================================== */
 
 .section5-purple-panel{
     font-family: "Robotto";
@@ -931,66 +936,96 @@ img {
     margin: 0 auto;
 }
 
-/* Section 5 - Content Section One */
+/* ===================================
+   CONTENEURS PRINCIPAUX
+   =================================== */
+
 .section5-content-one {
     display: grid;
     grid-template-columns: 2fr 1fr;
     grid-template-rows: 1fr;
     margin: 10px 64px;
-    height: 688px;
+    height: auto; /* Changé de 688px à auto */
+    min-height: 500px; /* Hauteur minimum */
+    gap: var(--spacing-md); /* Ajout d'un gap */
 }
+
+.section5-content-two {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: 1fr;
+    margin: 10px 64px;
+    height: auto; /* Changé de 688px à auto */
+    min-height: 500px; /* Hauteur minimum */
+    margin-top: var(--spacing-xl);
+    gap: var(--spacing-md); /* Ajout d'un gap */
+}
+
+/* ===================================
+   PANNEAUX - STYLES DE BASE
+   =================================== */
 
 .section5-cream-panel {
     border-radius: 50px;
-    margin: var(--spacing-lg);
     display: flex;
     background-color: var(--background-cream);
     padding: var(--spacing-lg);
     grid-row: 1;
     grid-column: 1 / 2;
+    gap: 20px;
+    align-items: center;
+    position: relative; /* Important pour éviter les superpositions */
+    z-index: 1; /* Contrôle de l'ordre d'affichage */
 }
 
 .section5-gray-panel {
-    margin: var(--spacing-lg);
     display: flex;
     background-color: var(--background-gray);
     padding: var(--spacing-lg);
     grid-row: 1;
     grid-column: 2 / 3;
     border-radius: 50px;
-}
-
-/* Section 5 - Content Section Two */
-.section5-content-two {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    grid-template-rows: 1fr;
-    height: 688px;
-    margin-top: var(--spacing-xl);
-    margin: var(--spacing-lg) 64px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    position: relative; /* Important */
+    z-index: 1;
 }
 
 .section5-purple-panel {
     border-radius: 50px;
-    margin: var(--spacing-lg);
     display: flex;
     background-color: var(--background-purple);
     padding: var(--spacing-lg);
     grid-row: 1;
     grid-column: 1 / 2;
     text-align: center;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    position: relative; /* Important */
+    z-index: 1;
 }
 
 .section5-green-panel {
     border-radius: 50px;
-    margin: var(--spacing-lg);
     display: flex;
     background-color: var(--background-green);
     padding: var(--spacing-lg);
     grid-row: 1;
     text-align: flex-start;
     grid-column: 2 / 3;
+    gap: 20px;
+    align-items: center;
+    position: relative; /* Important */
+    z-index: 1;
 }
+
+/* ===================================
+   TEXTES ET TITRES
+   =================================== */
 
 .section5-dark-text-title {
     font-family: "Rouge Script";
@@ -998,6 +1033,8 @@ img {
     color: var(--text-dark);
     text-align: center;
     margin-bottom: 20px;
+    position: relative; /* Évite les superpositions */
+    z-index: 2;
 }
 
 .section5-white-text-title {
@@ -1006,50 +1043,32 @@ img {
     color: var(--text-white);
     text-align: flex-start;
     margin-bottom: 20px;
-    display: flex;
     justify-content: flex-start;
     width: 100%;
+    position: relative; /* Évite les superpositions */
+    z-index: 2;
 }
 
 .section5-left-column {
     display: flex;
     flex-direction: column;
+    position: relative; /* Important */
+    z-index: 2;
 }
 
 .section5-centered-text {
-    display: flex;
     justify-content: center;
     align-items: center;
     text-align: justify;
     font-family: "Roboto";
+    position: relative; /* Important */
+    z-index: 2;
 }
 
-/* Section 5 - Media Queries for phone screens */
-@media (max-width: 768px) {
-    .section5-content-one, .section5-content-two {
-        display: block;
-        margin: var(--spacing-lg) 20px;
-    }
+/* ===================================
+   IMAGES
+   =================================== */
 
-    .section5-cream-panel, .section5-gray-panel, .section5-purple-panel, .section5-green-panel {
-        height: 688px;
-        grid-row: unset;
-        grid-column: unset;
-        margin: var(--spacing-lg) 0;
-        margin-bottom: var(--spacing-lg);
-    }
-
-    .section5-green-panel {
-        margin-bottom: 0;
-    }
-}
-
-
-
-
-
-
-/* Styles pour les images dans les panneaux */
 .section5-panel-image {
     width: 180px;
     height: 240px;
@@ -1058,6 +1077,8 @@ img {
     box-shadow: 0 8px 25px rgba(0,0,0,0.2);
     transition: transform 0.3s ease;
     flex-shrink: 0;
+    position: relative; /* Important */
+    z-index: 2;
 }
 
 .section5-panel-image img {
@@ -1070,32 +1091,10 @@ img {
     transform: scale(1.05);
 }
 
-/* Ajustements pour les panneaux avec images */
-.section5-cream-panel {
-    gap: 20px;
-    align-items: center;
-}
+/* ===================================
+   CONTENU DES PANNEAUX
+   =================================== */
 
-.section5-gray-panel {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-}
-
-.section5-purple-panel {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-}
-
-.section5-green-panel {
-    gap: 20px;
-    align-items: center;
-}
-
-/* Contenu spécifique pour les panneaux avec images */
 .section5-panel-content {
     display: flex;
     flex-direction: column;
@@ -1103,6 +1102,9 @@ img {
     align-items: center;
     gap: 20px;
     text-align: center;
+    width: 100%;
+    position: relative; /* Important */
+    z-index: 2;
 }
 
 .section5-panel-text {
@@ -1110,18 +1112,164 @@ img {
     line-height: 1.6;
     color: var(--text-white);
     text-align: center;
+    position: relative; /* Important */
+    z-index: 2;
 }
 
-/* Ajustements responsive pour les images */
-@media (max-width: 768px) {
-    .section5-panel-image {
-        width: 150px;
-        height: 200px;
+/* ===================================
+   CORRECTION SPÉCIFIQUE POUR ÉLÉMENTS FLOTTANTS
+   =================================== */
+
+/* Si vous avez des éléments avec ces classes qui flottent */
+.informations-pratiques,
+.situation-geographique,
+[class*="information"],
+[class*="pratique"],
+[class*="situation"],
+[class*="geographique"] {
+    position: relative !important; /* Force la position relative */
+    z-index: 0 !important; /* Met en arrière-plan */
+    display: none !important; /* Cache temporairement pour identifier */
+}
+
+/* Assure que tous les éléments de la section restent dans le flux normal */
+.section5-content-one *,
+.section5-content-two * {
+    position: relative !important;
+    z-index: auto !important;
+}
+
+/* Exception pour les éléments qui doivent rester positionnés */
+.section5-panel-image,
+.section5-panel-content,
+.section5-left-column {
+    position: relative !important;
+    z-index: 2 !important;
+}
+
+/* ===================================
+   MEDIA QUERIES - GRANDS ÉCRANS
+   =================================== */
+
+@media (min-width: 1400px) {
+    .section5-content-one,
+    .section5-content-two {
+        margin: var(--spacing-lg) 100px;
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
     }
     
-    .section5-cream-panel, .section5-gray-panel, .section5-purple-panel, .section5-green-panel {
-        flex-direction: column;
-        gap: 15px;
+    .section5-dark-text-title,
+    .section5-white-text-title {
+        font-size: 3.5vw;
+    }
+}
+
+@media (min-width: 1025px) {
+    /* Assure que le layout grid fonctionne correctement */
+    .section5-content-one {
+        display: grid !important;
+        grid-template-columns: 2fr 1fr !important;
+    }
+    
+    .section5-content-two {
+        display: grid !important;
+        grid-template-columns: 1fr 2fr !important;
+    }
+    
+    /* Force la position des panneaux */
+    .section5-cream-panel {
+        grid-column: 1 / 2 !important;
+    }
+    
+    .section5-gray-panel {
+        grid-column: 2 / 3 !important;
+    }
+    
+    .section5-purple-panel {
+        grid-column: 1 / 2 !important;
+    }
+    
+    .section5-green-panel {
+        grid-column: 2 / 3 !important;
+    }
+}
+
+/* ===================================
+   MEDIA QUERIES EXISTANTS (TABLETTES/MOBILE)
+   =================================== */
+
+/* TABLETTES ET ÉCRANS MOYENS (769px - 1024px) */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .section5-intro-container {
+        grid-template-columns: 1fr;
+        margin: var(--spacing-lg) 40px;
+        text-align: center;
+        gap: var(--spacing-md);
+    }
+    
+    .section5-intro-title {
+        font-size: 8vw;
+        grid-column: 1;
+        margin-bottom: var(--spacing-md);
+    }
+    
+    .section5-content-one, 
+    .section5-content-two {
+        display: block !important;
+        margin: var(--spacing-lg) 40px !important;
+        height: auto !important;
+    }
+    
+    .section5-cream-panel, 
+    .section5-gray-panel, 
+    .section5-purple-panel, 
+    .section5-green-panel {
+        grid-row: unset !important;
+        grid-column: unset !important;
+        height: auto !important;
+        width: 100% !important;
+        margin: 0 0 var(--spacing-lg) 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: var(--spacing-md) !important;
+        padding: var(--spacing-sm) !important;
+        box-sizing: border-box !important;
+    }
+}
+
+/* MOBILE (jusqu'à 768px) */
+@media (max-width: 768px) {
+    .section5-intro-container {
+        display: block !important;
+        margin: var(--spacing-lg) 20px;
+        text-align: center;
+    }
+    
+    .section5-content-one, 
+    .section5-content-two {
+        display: block !important;
+        margin: var(--spacing-lg) 20px !important;
+        height: auto !important;
+    }
+    
+    .section5-cream-panel, 
+    .section5-gray-panel, 
+    .section5-purple-panel, 
+    .section5-green-panel {
+        grid-row: unset !important;
+        grid-column: unset !important;
+        height: auto !important;
+        width: 100% !important;
+        margin: 0 0 var(--spacing-xl) 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: var(--spacing-md) !important;
+        padding: var(--spacing-lg) var(--spacing-md) !important;
+        box-sizing: border-box !important;
     }
 }
 
