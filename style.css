@@ -136,7 +136,7 @@ img{max-width:100%;height:auto;display:block;}
    HERO
    ===================================================== */
 .hero-section{
-  height:95vh;background-image:url('assets/images/ext3.jpg');background-size:cover;background-position:center;
+  height:95vh;background-image:url('assets/images/1.jpg');background-size:cover;background-position:center;
   background-attachment:fixed;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;
 }
 .hero-section::before{content:'';position:absolute;inset:0;background:rgba(0,0,0,0.3);z-index:1;}
