@@ -172,7 +172,7 @@
                     <br>La maison de Jeanne est<strong>  un gîte de charme</strong>, spacieux et confortable, pouvant accueillir jusqu'à 5 personnes. Elle se situe au fond du jardin face à la piscine.<br>
                     <br>Elle est <strong> indépendante, climatisée</strong> . Vous disposez d'une cuisine équipée (lave-linge, lave-vaisselle, four, micro-ondes, télévision, wifi, tout le nécessaire pour passer un agréable séjour). <br>
                     <br>Au <strong> premier étage</strong>, se trouve la grande <strong> chambre parentale</strong> lumineuse avec un couchage 160, une grande penderie, un coin blibliothéque ainsi que <strong> la salle d'eau.</strong> <br>
-                    <br>Au <strong> deuxième étage</strong>, se trouve <strong> la chambre des enfants</strong>  avec deux lits bébés ainsi que deux lits 90. <br> <br>
+                    <br>Au <strong> deuxième étage</strong>, la seconde chambre mansardée avec <strong> deux lits en 80 </strong>, un <strong>lit d'appoint en 80</strong>, ainsi que <strong>deux lits bébés</strong>.<br> <br>
                     La <strong> terrasse</strong> est <strong> ombragée sous la glycine </strong>, elle est équipée d'un barbecue. <br>
                     <br>Le <strong> jardin </strong> et la <strong> piscine</strong> sont clos et sécurisés</strong> pour les enfants. <br>
                 </p>
@@ -314,43 +314,106 @@
     </div>
 </section>
 
-    <!-- Section 7 -->
-    <section class="custom-section7" id="infos_pratiques">
-        <h1 class="section7-title">Informations pratiques :</h1>
 
-        <div class="section7-section">
-            <h2 class="section7-subtitle">Situation géographique :</h2>
-            <div class="section7-map-container">
-                <img class="section7-map-image" src="assets/images/carte_france.png" alt="Carte de France">
-                <img class="section7-map-image" src="assets/images/carte_locale.png" alt="Carte locale">
+<!-- SECTION INFOS + CALENDRIER -->
+<section class="info-booking-section">
+    <div class="info-booking-container">
+        <!-- Colonne gauche: Tarifs et Contact -->
+        <div class="info-column">
+            <div class="section7-section">
+                <h2 class="section7-subtitle">Tarifs :</h2>
+                <p class="section7-text">Nous louons le gîte à partir de 85€ la nuit selon les mois de l'année.</p>
+                <p class="section7-text">Merci de nous contacter pour toute demande de réservation ou de tarifs.</p>
+                
+                <!-- Wrapper pour mettre tarifs et calendrier côte à côte -->
+                <div class="tarifs-calendrier-wrapper">
+                    <!-- Calendrier à gauche -->
+                    <div class="calendar-compact">
+                        <h2 class="calendar-title">Calendrier des disponibilités</h2>
+                        
+                        <div class="calendar-nav-compact">
+                            <button class="calendar-nav-btn-compact" id="prevYear">‹‹</button>
+                            <button class="calendar-nav-btn-compact" id="prevMonth">‹</button>
+                            <div class="month-year-display" id="monthYearDisplay"></div>
+                            <button class="calendar-nav-btn-compact" id="nextMonth">›</button>
+                            <button class="calendar-nav-btn-compact" id="nextYear">››</button>
+                        </div>
+
+                        <div class="calendar-grid-compact" id="calendarCompact"></div>
+
+                        <div class="legend-compact">
+                            <div class="legend-item-compact">
+                                <div class="legend-color-compact selected"></div>
+                                <span>Sélectionné</span>
+                            </div>
+                            <div class="legend-item-compact">
+                                <div class="legend-color-compact in-range"></div>
+                                <span>Période</span>
+                            </div>
+                            <div class="legend-item-compact">
+                                <div class="legend-color-compact booked"></div>
+                                <span>Indisponible</span>
+                            </div>
+                        </div>
+
+                        <div class="summary-compact" id="summaryCompact">
+                            <div class="summary-compact-title">Récapitulatif</div>
+                            <div class="summary-compact-dates" id="summaryDatesCompact"></div>
+                            <div class="summary-compact-details">
+                                <div class="summary-compact-row">
+                                    <span>Durée:</span>
+                                    <span id="summaryNightsCompact"></span>
+                                </div>
+                                <div class="summary-compact-row">
+                                    <span>Tarif:</span>
+                                    <span id="summaryPriceCompact"></span>
+                                </div>
+                                <div class="summary-compact-row total">
+                                    <span>Total:</span>
+                                    <span id="summaryTotalCompact"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cartes de tarifs à droite -->
+                    <div class="pricing-info-grid">
+                        <div class="price-info-card">
+                            <div class="price-label">Basse saison</div>
+                            <div class="price-amount">85€/nuit</div>
+                        </div>
+                        <div class="price-info-card">
+                            <div class="price-label">Moyenne saison</div>
+                            <div class="price-amount">110€/nuit</div>
+                        </div>
+                        <div class="price-info-card">
+                            <div class="price-label">Haute saison</div>
+                            <div class="price-amount">150€/nuit</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section7-section">
+                <h2 class="section7-subtitle">Nous contacter :</h2>
+                <div class="section7-contact-info">
+                    <div class="section7-contact-item">
+                        <img class="section7-contact-icon" src="assets/images/🦆 icon _envelope closed_.png" alt="Email Icon">
+                        <p class="section7-contact-text">lamaisondejeanne24@gmail.com</p>
+                    </div>
+                    <div class="section7-contact-item">
+                        <img class="section7-contact-icon" src="assets/images/🦆 icon _phone_.png" alt="Phone Icon">
+                        <p class="section7-contact-text">+33648265033</p>
+                    </div>
+                    <div class="section7-contact-item">
+                        <img class="section7-contact-icon" src="assets/images/🦆 icon _map marker_.png" alt="Address Icon">
+                        <p class="section7-contact-text">214 rue des Glycines 24420 Mayac</p>
+                    </div>
+                </div>
             </div>
         </div>
-
-        <div class="section7-section">
-            <h2 class="section7-subtitle">Tarifs :</h2>
-            <p class="section7-text">Nous louons le gîte à partir de 85€ la nuit.</p>
-            <p class="section7-text">Merci de nous contacter pour toute demande de réservation ou de tarifs.</p>
-        </div>
-
-        <div class="section7-section" id="contact">
-            <h2 class="section7-subtitle">Nous contacter :</h2>
-            <div class="section7-contact-info">
-                <div class="section7-contact-item">
-                    <img class="section7-contact-icon" src="assets/images/🦆 icon _envelope closed_.png" alt="Email Icon">
-                    <p class="section7-contact-text">lamaisondejeanne24@gmail.com</p>
-                </div>
-                <div class="section7-contact-item">
-                    <img class="section7-contact-icon" src="assets/images/🦆 icon _phone_.png" alt="Phone Icon">
-                    <p class="section7-contact-text">+33648265033</p>
-                </div>
-                <div class="section7-contact-item">
-                    <img class="section7-contact-icon" src="assets/images/🦆 icon _map marker_.png" alt="Address Icon">
-                    <p class="section7-contact-text">214 rue des Glycines 24420 Mayac</p>
-                </div>
-            </div>
-</div>
-
-    </section>
+    </div>
+</section>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -508,6 +571,248 @@
             // Initialize carousel
             new FlexibleCarousel(document.getElementById('carousel'));
         });
+// Configuration calendrier compact
+// Configuration calendrier par périodes
+        const pricingByPeriod = {
+            low: {
+                label: 'Basse saison',
+                price: 85,
+                periods: [
+                    { start: '09-06', end: '12-19' },
+                    { start: '01-05', end: '06-26' }
+                    { start: '08-29', end: '10-16' }
+                    { start: '11-03', end: '11-11' }
+                ]
+            },
+            mid: {
+                label: 'Moyenne saison',
+                price: 110,
+                periods: [
+                    { start: '-', end: '-' },
+                ]
+            },
+            high: {
+                label: 'Haute saison',
+                price: 150,
+                periods: [
+                    { start: '-', end: '-' },
+                ]
+            }
+        };
+
+
+// Fonction pour générer des dates entre deux périodes
+function generateDateRange(startDate, endDate) {
+    const dates = [];
+    const start = new Date(startDate);
+    const end = new Date(endDate);
+    
+    while (start <= end) {
+        const year = start.getFullYear();
+        const month = String(start.getMonth() + 1).padStart(2, '0');
+        const day = String(start.getDate()).padStart(2, '0');
+        dates.push(`${year}-${month}-${day}`);
+        start.setDate(start.getDate() + 1);
+    }
+    
+    return dates;
+}
+
+// Dates réservées - Vous pouvez maintenant utiliser des périodes !
+const bookedDatesCompact = [
+    // Méthode 1 : Dates individuelles
+    '2024-11-15',
+    
+    // Méthode 2 : Périodes complètes (plus pratique !)
+    ...generateDateRange('2026-07-09', '2026-07-23'),
+    ...generateDateRange('2026-08-01', '2026-08-14'),
+    ...generateDateRange('2026-08-08', '2026-08-14'),
+];
+
+        let currentDateCompact = new Date();
+        let selectedStartCompact = null;
+        let selectedEndCompact = null;
+
+        function getSeasonCompact(month) {
+            if (pricingCompact.low.months.includes(month)) return 'low';
+            if (pricingCompact.mid.months.includes(month)) return 'mid';
+            return 'high';
+        }
+
+        function formatDateCompact(date) {
+            const y = date.getFullYear();
+            const m = String(date.getMonth() + 1).padStart(2, '0');
+            const d = String(date.getDate()).padStart(2, '0');
+            return `${y}-${m}-${d}`;
+        }
+
+        function isDateBookedCompact(dateStr) {
+            return bookedDatesCompact.includes(dateStr);
+        }
+
+        function isDateInRangeCompact(dateStr) {
+            if (!selectedStartCompact || !selectedEndCompact) return false;
+            const date = new Date(dateStr);
+            const start = new Date(selectedStartCompact);
+            const end = new Date(selectedEndCompact);
+            return date > start && date < end;
+        }
+
+        function renderCalendarCompact() {
+            const calendar = document.getElementById('calendarCompact');
+            if (!calendar) {
+                console.error('Calendrier non trouvé');
+                return;
+            }
+
+            const year = currentDateCompact.getFullYear();
+            const month = currentDateCompact.getMonth();
+            
+            // Mise à jour du titre
+            const monthDisplay = document.getElementById('monthYearDisplay');
+            if (monthDisplay) {
+                monthDisplay.textContent = currentDateCompact.toLocaleDateString('fr-FR', { 
+                    month: 'long', 
+                    year: 'numeric' 
+                });
+            }
+
+            // Vider le calendrier
+            calendar.innerHTML = '';
+
+            // En-têtes des jours
+            const dayNames = ['D', 'L', 'M', 'M', 'J', 'V', 'S'];
+            dayNames.forEach(day => {
+                const header = document.createElement('div');
+                header.className = 'day-header-compact';
+                header.textContent = day;
+                calendar.appendChild(header);
+            });
+
+            // Premier jour du mois
+            const firstDay = new Date(year, month, 1);
+            const startingDayOfWeek = firstDay.getDay();
+
+            // Dernier jour du mois
+            const lastDay = new Date(year, month + 1, 0);
+            const daysInMonth = lastDay.getDate();
+
+            // Espaces vides
+            for (let i = 0; i < startingDayOfWeek; i++) {
+                const empty = document.createElement('div');
+                empty.className = 'day-cell-compact empty';
+                calendar.appendChild(empty);
+            }
+
+            // Jours du mois
+            for (let day = 1; day <= daysInMonth; day++) {
+                const dateStr = formatDateCompact(new Date(year, month, day));
+                const cell = document.createElement('div');
+                cell.className = 'day-cell-compact';
+                cell.textContent = day;
+                cell.dataset.date = dateStr;
+
+                if (isDateBookedCompact(dateStr)) {
+                    cell.classList.add('booked');
+                } else {
+                    if (dateStr === selectedStartCompact || dateStr === selectedEndCompact) {
+                        cell.classList.add('selected');
+                    } else if (isDateInRangeCompact(dateStr)) {
+                        cell.classList.add('in-range');
+                    }
+
+                    cell.addEventListener('click', () => selectDateCompact(dateStr));
+                }
+
+                calendar.appendChild(cell);
+            }
+        }
+
+        function selectDateCompact(dateStr) {
+            if (!selectedStartCompact || (selectedStartCompact && selectedEndCompact)) {
+                selectedStartCompact = dateStr;
+                selectedEndCompact = null;
+            } else {
+                if (new Date(dateStr) > new Date(selectedStartCompact)) {
+                    selectedEndCompact = dateStr;
+                } else {
+                    selectedStartCompact = dateStr;
+                    selectedEndCompact = null;
+                }
+            }
+
+            renderCalendarCompact();
+            updateSummaryCompact();
+        }
+
+        function updateSummaryCompact() {
+            const summary = document.getElementById('summaryCompact');
+            if (!summary) return;
+
+            if (selectedStartCompact && selectedEndCompact) {
+                const start = new Date(selectedStartCompact);
+                const end = new Date(selectedEndCompact);
+                const days = Math.ceil((end - start) / (1000 * 60 * 60 * 24));
+                const month = start.getMonth() + 1;
+                const season = getSeasonCompact(month);
+                const pricePerNight = pricingCompact[season].price;
+                const total = days * pricePerNight;
+
+                const datesEl = document.getElementById('summaryDatesCompact');
+                const nightsEl = document.getElementById('summaryNightsCompact');
+                const priceEl = document.getElementById('summaryPriceCompact');
+                const totalEl = document.getElementById('summaryTotalCompact');
+
+                if (datesEl) datesEl.textContent = `${start.toLocaleDateString('fr-FR', {day:'numeric', month:'short'})} - ${end.toLocaleDateString('fr-FR', {day:'numeric', month:'short', year:'numeric'})}`;
+                if (nightsEl) nightsEl.textContent = `${days} nuit${days > 1 ? 's' : ''}`;
+                if (priceEl) priceEl.textContent = `${pricePerNight}€/nuit (${pricingCompact[season].label})`;
+                if (totalEl) totalEl.textContent = `${total}€`;
+
+                summary.classList.add('active');
+            } else {
+                summary.classList.remove('active');
+            }
+        }
+
+        // Event listeners calendrier compact - avec setTimeout pour s'assurer que le DOM est chargé
+        setTimeout(() => {
+            const prevMonth = document.getElementById('prevMonth');
+            const nextMonth = document.getElementById('nextMonth');
+            const prevYear = document.getElementById('prevYear');
+            const nextYear = document.getElementById('nextYear');
+
+            if (prevMonth) {
+                prevMonth.addEventListener('click', () => {
+                    currentDateCompact.setMonth(currentDateCompact.getMonth() - 1);
+                    renderCalendarCompact();
+                });
+            }
+
+            if (nextMonth) {
+                nextMonth.addEventListener('click', () => {
+                    currentDateCompact.setMonth(currentDateCompact.getMonth() + 1);
+                    renderCalendarCompact();
+                });
+            }
+
+            if (prevYear) {
+                prevYear.addEventListener('click', () => {
+                    currentDateCompact.setFullYear(currentDateCompact.getFullYear() - 1);
+                    renderCalendarCompact();
+                });
+            }
+
+            if (nextYear) {
+                nextYear.addEventListener('click', () => {
+                    currentDateCompact.setFullYear(currentDateCompact.getFullYear() + 1);
+                    renderCalendarCompact();
+                });
+            }
+
+            // Initialisation calendrier compact
+            renderCalendarCompact();
+            updateSummaryCompact();
+        }, 100);
         </script>
     
 </body>

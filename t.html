@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendrier de Réservation</title>
+    <style>
+        :root {
+            --primary-blue: #86C1FC;
+            --primary-blue-light: #B3D9FE;
+            --primary-blue-alpha: rgba(179, 217, 254, 0.4);
+            --accent-purple: #667eea;
+            --text-dark: #2C2C2C;
+            --text-white: #ffffff;
+            --text-light: #333;
+            --background-cream: rgba(255, 247, 236, 0.5);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--background-cream);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .calendar-wrapper {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            color: var(--text-dark);
+            font-size: 2rem;
+        }
+
+        .icon {
+            width: 40px;
+            height: 40px;
+            fill: var(--primary-blue);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .price-card {
+            padding: 20px;
+            border-radius: 12px;
+            border: 2px solid #e0e0e0;
+            background: #f9f9f9;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .price-card.active {
+            border-color: var(--primary-blue);
+            background: var(--primary-blue-alpha);
+        }
+
+        .price-label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 5px;
+        }
+
+        .price-amount {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary-blue);
+        }
+
+        .price-unit {
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        .calendar-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .nav-btn {
+            padding: 12px 24px;
+            background: var(--primary-blue);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: opacity 0.3s;
+        }
+
+        .nav-btn:hover {
+            opacity: 0.85;
+        }
+
+        .month-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            text-transform: capitalize;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .day-header {
+            text-align: center;
+            font-weight: 600;
+            color: #666;
+            padding: 10px;
+            font-size: 0.9rem;
+        }
+
+        .day-cell {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 2px solid transparent;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        .day-cell:hover:not(.booked):not(.empty) {
+            background: var(--primary-blue-alpha);
+        }
+
+        .day-cell.selected {
+            background: var(--primary-blue);
+            color: white;
+            font-weight: bold;
+        }
+
+        .day-cell.in-range {
+            background: var(--primary-blue-alpha);
+            color: var(--text-dark);
+        }
+
+        .day-cell.booked {
+            background: #e0e0e0;
+            color: #999;
+            cursor: not-allowed;
+            text-decoration: line-through;
+        }
+
+        .day-cell.empty {
+            cursor: default;
+        }
+
+        .legend {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 25px;
+            font-size: 0.9rem;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 5px;
+        }
+
+        .summary {
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-purple));
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            display: none;
+        }
+
+        .summary.active {
+            display: block;
+        }
+
+        .summary-header {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .summary-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .summary-dates {
+            opacity: 0.9;
+        }
+
+        .summary-details {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+
+        .summary-row:last-child {
+            border-top: 1px solid rgba(255,255,255,0.3);
+            padding-top: 15px;
+            margin-top: 15px;
+            margin-bottom: 0;
+        }
+
+        .summary-total {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .book-btn {
+            width: 100%;
+            padding: 15px;
+            background: white;
+            color: var(--primary-blue);
+            border: none;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+
+        .book-btn:hover {
+            opacity: 0.9;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 40px;
+            background: #f9f9f9;
+            border-radius: 15px;
+            color: #666;
+        }
+
+        .empty-state svg {
+            width: 60px;
+            height: 60px;
+            fill: #ccc;
+            margin-bottom: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .calendar-grid {
+                gap: 4px;
+            }
+            
+            .day-cell {
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="calendar-wrapper">
+            <div class="header">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                </svg>
+                <h1>Réservation</h1>
+            </div>
+
+            <div class="pricing-grid">
+                <div class="price-card" data-season="low">
+                    <div class="price-label">Basse saison</div>
+                    <div class="price-amount">80€</div>
+                    <div class="price-unit">par nuit</div>
+                </div>
+                <div class="price-card" data-season="mid">
+                    <div class="price-label">Moyenne saison</div>
+                    <div class="price-amount">120€</div>
+                    <div class="price-unit">par nuit</div>
+                </div>
+                <div class="price-card" data-season="high">
+                    <div class="price-label">Haute saison</div>
+                    <div class="price-amount">180€</div>
+                    <div class="price-unit">par nuit</div>
+                </div>
+            </div>
+
+            <div class="calendar-nav">
+                <button class="nav-btn" id="prevBtn">← Précédent</button>
+                <div class="month-title" id="monthTitle"></div>
+                <button class="nav-btn" id="nextBtn">Suivant →</button>
+            </div>
+
+            <div class="calendar-grid" id="calendar"></div>
+
+            <div class="legend">
+                <div class="legend-item">
+                    <div class="legend-color" style="background: var(--primary-blue);"></div>
+                    <span>Sélectionné</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: var(--primary-blue-alpha);"></div>
+                    <span>Période</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #e0e0e0;"></div>
+                    <span>Indisponible</span>
+                </div>
+            </div>
+
+            <div class="summary" id="summary">
+                <div class="summary-header">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="16" x2="12" y2="12"></line>
+                        <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                    </svg>
+                    <div>
+                        <div class="summary-title">Récapitulatif de votre séjour</div>
+                        <div class="summary-dates" id="summaryDates"></div>
+                    </div>
+                </div>
+                <div class="summary-details">
+                    <div class="summary-row">
+                        <span>Durée du séjour:</span>
+                        <span id="summaryNights"></span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Tarif <span id="summarySeason"></span>:</span>
+                        <span id="summaryPrice"></span>
+                    </div>
+                    <div class="summary-row">
+                        <span style="font-size: 1.3rem; font-weight: bold;">Total:</span>
+                        <span class="summary-total" id="summaryTotal"></span>
+                    </div>
+                </div>
+                <button class="book-btn">Réserver maintenant</button>
+            </div>
+
+            <div class="empty-state" id="emptyState">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="16" x2="12" y2="12" stroke="white" stroke-width="2"></line>
+                    <line x1="12" y1="8" x2="12.01" y2="8" stroke="white" stroke-width="2"></line>
+                </svg>
+                <p>Sélectionnez une date de début et une date de fin<br>pour voir le prix total</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Configuration
+        const pricing = {
+            low: { label: 'Basse saison', price: 80, months: [1, 2, 3, 11] },
+            mid: { label: 'Moyenne saison', price: 120, months: [4, 5, 9, 10] },
+            high: { label: 'Haute saison', price: 180, months: [6, 7, 8, 12] }
+        };
+
+        const bookedDates = [
+            '2024-11-15', '2024-11-16', '2024-11-17',
+            '2024-12-24', '2024-12-25', '2024-12-26',
+            '2025-01-01', '2025-01-02'
+        ];
+
+        let currentDate = new Date();
+        let selectedStart = null;
+        let selectedEnd = null;
+
+        // Fonctions utilitaires
+        function getSeason(month) {
+            if (pricing.low.months.includes(month)) return 'low';
+            if (pricing.mid.months.includes(month)) return 'mid';
+            return 'high';
+        }
+
+        function formatDate(date) {
+            const y = date.getFullYear();
+            const m = String(date.getMonth() + 1).padStart(2, '0');
+            const d = String(date.getDate()).padStart(2, '0');
+            return `${y}-${m}-${d}`;
+        }
+
+        function isDateBooked(dateStr) {
+            return bookedDates.includes(dateStr);
+        }
+
+        function isDateInRange(dateStr) {
+            if (!selectedStart || !selectedEnd) return false;
+            const date = new Date(dateStr);
+            const start = new Date(selectedStart);
+            const end = new Date(selectedEnd);
+            return date > start && date < end;
+        }
+
+        function updatePricingCards() {
+            const month = currentDate.getMonth() + 1;
+            const season = getSeason(month);
+            
+            document.querySelectorAll('.price-card').forEach(card => {
+                card.classList.remove('active');
+                if (card.dataset.season === season) {
+                    card.classList.add('active');
+                }
+            });
+        }
+
+        function renderCalendar() {
+            const calendar = document.getElementById('calendar');
+            const year = currentDate.getFullYear();
+            const month = currentDate.getMonth();
+            
+            // Mise à jour du titre
+            const monthTitle = document.getElementById('monthTitle');
+            monthTitle.textContent = currentDate.toLocaleDateString('fr-FR', { 
+                month: 'long', 
+                year: 'numeric' 
+            });
+
+            // Vider le calendrier
+            calendar.innerHTML = '';
+
+            // En-têtes des jours
+            const dayNames = ['Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam'];
+            dayNames.forEach(day => {
+                const header = document.createElement('div');
+                header.className = 'day-header';
+                header.textContent = day;
+                calendar.appendChild(header);
+            });
+
+            // Premier jour du mois
+            const firstDay = new Date(year, month, 1);
+            const startingDayOfWeek = firstDay.getDay();
+
+            // Dernier jour du mois
+            const lastDay = new Date(year, month + 1, 0);
+            const daysInMonth = lastDay.getDate();
+
+            // Espaces vides
+            for (let i = 0; i < startingDayOfWeek; i++) {
+                const empty = document.createElement('div');
+                empty.className = 'day-cell empty';
+                calendar.appendChild(empty);
+            }
+
+            // Jours du mois
+            for (let day = 1; day <= daysInMonth; day++) {
+                const dateStr = formatDate(new Date(year, month, day));
+                const cell = document.createElement('div');
+                cell.className = 'day-cell';
+                cell.textContent = day;
+                cell.dataset.date = dateStr;
+
+                if (isDateBooked(dateStr)) {
+                    cell.classList.add('booked');
+                } else {
+                    if (dateStr === selectedStart || dateStr === selectedEnd) {
+                        cell.classList.add('selected');
+                    } else if (isDateInRange(dateStr)) {
+                        cell.classList.add('in-range');
+                    }
+
+                    cell.addEventListener('click', () => selectDate(dateStr));
+                }
+
+                calendar.appendChild(cell);
+            }
+
+            updatePricingCards();
+        }
+
+        function selectDate(dateStr) {
+            if (!selectedStart || (selectedStart && selectedEnd)) {
+                selectedStart = dateStr;
+                selectedEnd = null;
+            } else {
+                if (new Date(dateStr) > new Date(selectedStart)) {
+                    selectedEnd = dateStr;
+                } else {
+                    selectedStart = dateStr;
+                    selectedEnd = null;
+                }
+            }
+
+            renderCalendar();
+            updateSummary();
+        }
+
+        function updateSummary() {
+            const summary = document.getElementById('summary');
+            const emptyState = document.getElementById('emptyState');
+
+            if (selectedStart && selectedEnd) {
+                const start = new Date(selectedStart);
+                const end = new Date(selectedEnd);
+                const days = Math.ceil((end - start) / (1000 * 60 * 60 * 24));
+                const month = start.getMonth() + 1;
+                const season = getSeason(month);
+                const pricePerNight = pricing[season].price;
+                const total = days * pricePerNight;
+
+                document.getElementById('summaryDates').textContent = 
+                    `Du ${start.toLocaleDateString('fr-FR')} au ${end.toLocaleDateString('fr-FR')}`;
+                document.getElementById('summaryNights').textContent = 
+                    `${days} nuit${days > 1 ? 's' : ''}`;
+                document.getElementById('summarySeason').textContent = 
+                    `(${pricing[season].label})`;
+                document.getElementById('summaryPrice').textContent = 
+                    `${pricePerNight}€ / nuit`;
+                document.getElementById('summaryTotal').textContent = 
+                    `${total}€`;
+
+                summary.classList.add('active');
+                emptyState.style.display = 'none';
+            } else {
+                summary.classList.remove('active');
+                emptyState.style.display = 'block';
+            }
+        }
+
+        // Event listeners
+        document.getElementById('prevBtn').addEventListener('click', () => {
+            currentDate.setMonth(currentDate.getMonth() - 1);
+            renderCalendar();
+        });
+
+        document.getElementById('nextBtn').addEventListener('click', () => {
+            currentDate.setMonth(currentDate.getMonth() + 1);
+            renderCalendar();
+        });
+
+        // Initialisation
+        renderCalendar();
+        updateSummary();
+    </script>
+</body>
+</html>
