@@ -186,7 +186,7 @@ img{max-width:100%;height:auto;display:block;}
    ===================================================== */
 .wrapper{
   display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto 1fr;gap:var(--spacing-md);
-  padding:var(--spacing-xl) var(--spacing-md);max-width:1200px;margin:0 auto;
+  padding:var(--spacing-xl) 64px;max-width:1200px;margin:0 auto;
 }
 .one{grid-column:1 / 2;grid-row:1;font-family:"Road Rage",cursive;font-size:clamp(3rem,6vw,8rem);color:var(--text-dark);
      margin-top:var(--spacing-xxl);margin-left:7vw;line-height:1;}
@@ -245,7 +245,7 @@ img{max-width:100%;height:auto;display:block;}
 .section5-perigord-map{display:flex;justify-content:center;align-items:center;width:70%;margin:0 auto;}
 
 .section5-content-one,.section5-content-two{
-  display:grid;grid-template-columns:2fr 1fr;grid-template-rows:1fr;margin:10px 64px;min-height:500px;gap:var(--spacing-md);
+  display:grid;grid-template-columns:2fr 1fr;grid-template-rows:1fr;margin:var(--spacing-xl) 64px;min-height:500px;gap:var(--spacing-md);
 }
 .section5-content-two{grid-template-columns:1fr 2fr;margin-top:var(--spacing-xl);}
 
@@ -285,16 +285,16 @@ img{max-width:100%;height:auto;display:block;}
 
 /* tablettes / mobiles spécifiques pour section5 (fusionné) */
 @media (max-width:1024px){
-  .section5-intro-container{grid-template-columns:1fr;margin:var(--spacing-lg) 40px;text-align:center;gap:var(--spacing-md);}
+  .section5-intro-container{grid-template-columns:1fr;margin:var(--spacing-lg) 64px;text-align:center;gap:var(--spacing-md);}
   .section5-intro-title{font-size:8vw;grid-column:1;margin-bottom:var(--spacing-md);}
-  .section5-content-one,.section5-content-two{display:block!important;margin:var(--spacing-lg) 40px!important;height:auto!important;}
+  .section5-content-one,.section5-content-two{display:block!important;margin:var(--spacing-lg) 64px!important;height:auto!important;}
   .section5-cream-panel,.section5-gray-panel,.section5-purple-panel,.section5-green-panel{
     grid-row:unset!important;grid-column:unset!important;height:auto!important;width:100%!important;margin:0 0 var(--spacing-lg) 0!important;display:flex!important;flex-direction:column!important;align-items:center!important;gap:var(--spacing-md)!important;padding:var(--spacing-sm)!important;box-sizing:border-box!important;
   }
 }
 @media (max-width:768px){
-  .section5-intro-container{display:block!important;margin:var(--spacing-lg) 20px;text-align:center;}
-  .section5-content-one,.section5-content-two{display:block!important;margin:var(--spacing-lg) 20px!important;height:auto!important;}
+  .section5-intro-container{display:block!important;margin:var(--spacing-lg) 64px;text-align:center;}
+  .section5-content-one,.section5-content-two{display:block!important;margin:var(--spacing-lg) 64px!important;height:auto!important;}
   .section5-cream-panel,.section5-gray-panel,.section5-purple-panel,.section5-green-panel{margin:0 0 var(--spacing-xl) 0!important;padding:var(--spacing-lg) var(--spacing-md)!important;}
 }
 
@@ -393,7 +393,7 @@ img{max-width:100%;height:auto;display:block;}
    ===================================================== */
 @media (max-width:1024px){
   :root{--spacing-lg:20px;--spacing-xl:30px;}
-  .wrapper{gap:var(--spacing-sm);padding:var(--spacing-lg) var(--spacing-sm);}
+  .wrapper{gap:var(--spacing-sm);padding:var(--spacing-lg) 64px;}
   .one{font-size:clamp(2.5rem,8vw,6rem);margin-left:3vw;}
 }
 @media (max-width:1000px){
