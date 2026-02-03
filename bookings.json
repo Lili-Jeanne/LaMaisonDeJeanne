@@ -1,0 +1,24 @@
+{
+  "reservations": [
+    {
+      "startDate": "2026-05-04",
+      "endDate": "2026-05-25",
+      "note": "Réservation existante"
+    },
+    {
+      "startDate": "2026-06-07",
+      "endDate": "2026-06-12",
+      "note": "Réservation existante"
+    },
+    {
+      "startDate": "2026-05-20",
+      "endDate": "2026-05-26",
+      "note": "Réservation existante"
+    },
+    {
+      "startDate": "2026-07-09",
+      "endDate": "2026-09-21",
+      "note": "Réservation existante"
+    },
+  ]
+}

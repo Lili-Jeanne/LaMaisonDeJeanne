@@ -1,0 +1,393 @@
+/* =====================================================
+   CALENDRIER STYLE AIRBNB - PALETTE BLEUE (VERSION COMPACTE)
+   ===================================================== */
+
+/* Variables de couleurs Airbnb-style avec bleu */
+:root {
+    --airbnb-blue: #0071c2;
+    --airbnb-blue-light: #4a9eda;
+    --airbnb-blue-lighter: #e8f4fd;
+    --airbnb-blue-hover: #005999;
+    --airbnb-gray: #717171;
+    --airbnb-gray-light: #f7f7f7;
+    --airbnb-border: #dddddd;
+    --airbnb-text: #222222;
+    --airbnb-shadow: 0 2px 16px rgba(0, 0, 0, 0.12);
+    --airbnb-shadow-hover: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Container pour calendrier + tarifs côte à côte sur grand écran */
+.calendar-pricing-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    align-items: start;
+    margin-top: 24px;
+    max-width: 800px;
+}
+
+/* Calendrier compact - Style Airbnb */
+.calendar-compact {
+    background: white;
+    border-radius: 12px;
+    padding: 18px;
+    box-shadow: var(--airbnb-shadow);
+    width: 100%;
+    max-width: 420px;
+    border: 1px solid var(--airbnb-border);
+    transition: box-shadow 0.3s ease;
+}
+
+.calendar-compact:hover {
+    box-shadow: var(--airbnb-shadow-hover);
+}
+
+/* Navigation du calendrier */
+.calendar-nav-compact {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+    gap: 8px;
+}
+
+.calendar-nav-btn-compact {
+    background: transparent;
+    color: var(--airbnb-text);
+    border: 1px solid var(--airbnb-border);
+    padding: 5px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    min-width: 26px;
+    min-height: 26px;
+    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.calendar-nav-btn-compact:hover {
+    background: var(--airbnb-gray-light);
+    border-color: var(--airbnb-text);
+    transform: scale(1.05);
+}
+
+.calendar-nav-btn-compact:active {
+    transform: scale(0.95);
+}
+
+.month-year-display {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--airbnb-text);
+    text-transform: capitalize;
+    flex: 1;
+    text-align: center;
+    letter-spacing: -0.02em;
+}
+
+/* Grille du calendrier */
+.calendar-grid-compact {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+    margin-bottom: 14px;
+}
+
+.day-header {
+    text-align: center;
+    font-weight: 600;
+    color: var(--airbnb-gray);
+    font-size: 0.6875rem;
+    padding: 6px 0;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+/* Cellules de dates - Style Airbnb circulaire */
+.day-cell {
+    aspect-ratio: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 0.8125rem;
+    font-weight: 400;
+    color: var(--airbnb-text);
+    transition: all 0.15s ease;
+    border: 2px solid transparent;
+    min-height: 34px;
+    position: relative;
+}
+
+.day-cell:hover:not(.booked):not(.empty) {
+    background: var(--airbnb-gray-light);
+    border-color: var(--airbnb-text);
+    font-weight: 600;
+}
+
+/* Date sélectionnée - Style Airbnb */
+.day-cell.selected {
+    background: var(--airbnb-blue);
+    color: white;
+    font-weight: 600;
+    border-color: var(--airbnb-blue);
+}
+
+.day-cell.selected:hover {
+    background: var(--airbnb-blue-hover);
+    border-color: var(--airbnb-blue-hover);
+}
+
+/* Dates dans la plage */
+.day-cell.in-range {
+    background: var(--airbnb-blue-lighter);
+    color: var(--airbnb-text);
+    border-radius: 0;
+}
+
+.day-cell.in-range:hover {
+    background: var(--airbnb-blue-light);
+    color: white;
+    border-radius: 50%;
+}
+
+/* Dates réservées */
+.day-cell.booked {
+    background: transparent;
+    color: var(--airbnb-gray);
+    text-decoration: line-through;
+    cursor: not-allowed;
+    opacity: 0.4;
+}
+
+.day-cell.booked:hover {
+    background: transparent;
+    border-color: transparent;
+}
+
+.day-cell.empty {
+    cursor: default;
+    visibility: hidden;
+}
+
+/* Aujourd'hui */
+.day-cell.today {
+    border: 2px solid var(--airbnb-blue);
+    font-weight: 600;
+}
+
+/* Dates passées - non sélectionnables */
+.day-cell.past {
+    background: transparent;
+    color: var(--airbnb-gray);
+    opacity: 0.3;
+    cursor: not-allowed;
+    text-decoration: line-through;
+}
+
+.day-cell.past:hover {
+    background: transparent;
+    border-color: transparent;
+    font-weight: 400;
+}
+
+/* Légende - Style Airbnb */
+.legend-compact {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 10px;
+    background: var(--airbnb-gray-light);
+    border-radius: 8px;
+}
+
+.legend-item-compact {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.75rem;
+    color: var(--airbnb-gray);
+    font-weight: 500;
+}
+
+.legend-color-compact {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 2px solid var(--airbnb-border);
+}
+
+.legend-color-compact.selected {
+    background: var(--airbnb-blue);
+    border-color: var(--airbnb-blue);
+}
+
+.legend-color-compact.in-range {
+    background: var(--airbnb-blue-lighter);
+    border-radius: 3px;
+}
+
+.legend-color-compact.booked {
+    background: white;
+    opacity: 0.4;
+}
+
+/* Résumé de réservation - Style Airbnb */
+.summary-compact {
+    background: white;
+    color: var(--airbnb-text);
+    padding: 14px;
+    border-radius: 10px;
+    display: none;
+    margin-top: 14px;
+    border: 2px solid var(--airbnb-blue);
+    box-shadow: var(--airbnb-shadow);
+}
+
+.summary-compact.active {
+    display: block;
+}
+
+.summary-compact-title {
+    font-weight: 600;
+    margin-bottom: 8px;
+    font-size: 0.9375rem;
+    color: var(--airbnb-text);
+}
+
+.summary-compact-dates {
+    font-size: 0.8125rem;
+    margin-bottom: 10px;
+    color: var(--airbnb-gray);
+    font-weight: 500;
+}
+
+.summary-compact-details {
+    margin-top: 10px;
+}
+
+.summary-compact-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 0.8125rem;
+    color: var(--airbnb-text);
+}
+
+.summary-compact-row.total {
+    font-size: 1.0625rem;
+    font-weight: 600;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid var(--airbnb-border);
+    color: var(--airbnb-blue);
+}
+
+.price-breakdown-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    font-size: 0.75rem;
+    color: var(--airbnb-gray);
+}
+
+/* Grille tarifs info - Style Airbnb */
+.pricing-info-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    max-width: 320px;
+}
+
+.price-info-card {
+    background: white;
+    border: 1px solid var(--airbnb-border);
+    border-radius: 10px;
+    padding: 14px;
+    text-align: center;
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.price-info-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--airbnb-shadow);
+    border-color: var(--airbnb-blue);
+}
+
+.price-info-card .price-label {
+    font-size: 0.75rem;
+    color: var(--airbnb-gray);
+    margin-bottom: 5px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.price-info-card .price-amount {
+    font-size: 1.375rem;
+    font-weight: 600;
+    color: var(--airbnb-blue);
+    margin-bottom: 5px;
+    letter-spacing: -0.02em;
+}
+
+.price-info-card .price-months {
+    font-size: 0.6875rem;
+    color: var(--airbnb-gray);
+    line-height: 1.3;
+}
+
+/* Responsive calendrier */
+@media (max-width: 1024px) {
+    .calendar-pricing-wrapper {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .calendar-compact {
+        max-width: 100%;
+    }
+
+    .pricing-info-grid {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .calendar-compact {
+        padding: 14px;
+        border-radius: 10px;
+    }
+
+    .day-cell {
+        font-size: 0.75rem;
+        min-height: 30px;
+    }
+
+    .calendar-nav-btn-compact {
+        padding: 4px;
+        font-size: 0.8125rem;
+        min-width: 24px;
+        min-height: 24px;
+    }
+
+    .month-year-display {
+        font-size: 0.875rem;
+    }
+
+    .pricing-info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .legend-compact {
+        gap: 8px;
+        padding: 8px;
+    }
+}
