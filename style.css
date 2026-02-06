@@ -577,8 +577,7 @@ p {
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto 1fr;
   gap: var(--spacing-md);
-  padding-top: var(--spacing-xl);
-  padding-bottom: var(--spacing-xl);
+  padding: var(--spacing-xl) var(--spacing-md);
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -590,7 +589,6 @@ p {
   font-size: clamp(3rem, 6vw, 8rem);
   color: var(--text-dark);
   margin-top: var(--spacing-xxl);
-  margin-left: 7vw;
   line-height: 1;
 }
 
@@ -625,7 +623,6 @@ p {
 .selfie {
   width: 100%;
   height: auto;
-  margin-left: 1vw;
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-light);
   transition: transform var(--transition-fast);
@@ -636,7 +633,6 @@ p {
 }
 
 .four {
-  margin-top: var(--spacing-lg);
   grid-column: 2 / 3;
   grid-row: 2;
   font-size: var(--font-size-body);
@@ -644,7 +640,6 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: var(--spacing-md);
   color: var(--text-dark);
   text-align: justify;
 }
@@ -742,18 +737,24 @@ p {
 /* =====================================================
    SECTION 4
    ===================================================== */
-.section-quatre-container {
+/* Appliquer le fond à la section parente pour qu'il s'étende sur toute la largeur */
+.custom-section:has(.section-quatre-container) {
   background-color: var(--background-cream);
-  margin-top: var(--spacing-lg);
+}
+
+.section-quatre-container {
   display: flex;
   flex-direction: column;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--spacing-xl) var(--spacing-md);
 }
 
 .section-quatre-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
-  margin: 20px 0;
+  margin: var(--spacing-md) 0;
   gap: var(--spacing-md);
 }
 
@@ -762,7 +763,7 @@ p {
   flex-direction: column;
   justify-content: center;
   text-align: justify;
-  margin: 64px;
+  margin: 0;
   font-size: var(--font-size-body);
   font-family: "Roboto", sans-serif;
 }
@@ -770,6 +771,16 @@ p {
 .section-quatre-image {
   display: flex;
   justify-content: center;
+}
+
+/* Premier et troisième bloc : image à droite */
+.section-quatre-content:nth-child(odd) .section-quatre-image {
+  justify-content: flex-end;
+}
+
+/* Deuxième et quatrième bloc : image à gauche */
+.section-quatre-content:nth-child(even) .section-quatre-image {
+  justify-content: flex-start;
 }
 
 .conteneur-image-section-quatre {
@@ -780,7 +791,7 @@ p {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 64px;
+  margin: 0;
 }
 
 .conteneur-image-section-quatre img {
@@ -923,14 +934,16 @@ p {
   display: grid;
   grid-template-columns: 2fr 1fr;
   grid-template-rows: 1fr;
-  margin: var(--spacing-xl) 64px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--spacing-xl) var(--spacing-md);
   min-height: 500px;
   gap: var(--spacing-md);
 }
 
 .section5-content-two {
   grid-template-columns: 1fr 2fr;
-  margin-top: var(--spacing-xl);
+  margin-top: 0;
 }
 
 /* textes & images */
@@ -1222,7 +1235,7 @@ p {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  margin-top: var(--spacing-lg);
+  margin-top: 0;
   padding: var(--spacing-lg) 0;
 }
 

@@ -238,6 +238,17 @@
     opacity: 0.4;
 }
 
+.legend-number-booked {
+    font-size: 0.75rem;
+    color: var(--airbnb-gray);
+    text-decoration: line-through;
+    opacity: 0.4;
+    font-weight: 400;
+    min-width: 14px;
+    text-align: center;
+}
+
+
 /* Résumé de réservation - Style Airbnb */
 .summary-compact {
     background: white;
@@ -303,6 +314,7 @@
     grid-template-columns: 1fr;
     gap: 10px;
     max-width: 320px;
+    margin: 0 0;
 }
 
 .price-info-card {

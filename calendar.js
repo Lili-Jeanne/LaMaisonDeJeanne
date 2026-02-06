@@ -272,7 +272,11 @@ function checkBookedInRange(startDate, endDate) {
 // Fonction pour mettre à jour le résumé de la réservation
 function updateSummary() {
     const summary = document.getElementById('summary');
+    const legendSelected = document.getElementById('legendSelected');
     if (!summary) return;
+
+    // Toujours afficher le bloc de résumé
+    summary.classList.add('active');
 
     if (selectedStart && selectedEnd) {
         const start = new Date(selectedStart);
@@ -324,16 +328,55 @@ function updateSummary() {
                     <span>${data.nights * data.price}€</span>
                 </div>`;
             }
+            // Ajouter les frais de ménage
+            breakdownHTML += `<div class="price-breakdown-item">
+                <span>Frais de ménage et linge de lit</span>
+                <span>80€</span>
+            </div>`;
             breakdownEl.innerHTML = breakdownHTML;
         }
 
+        // Ajouter les frais de ménage au total
+        const cleaningFee = 80;
+        const finalTotal = totalPrice + cleaningFee;
+
         if (totalEl) {
-            totalEl.textContent = `${totalPrice}€`;
+            totalEl.textContent = `${finalTotal}€`;
         }
 
-        summary.classList.add('active');
+        // Afficher la légende "Période sélectionnée"
+        if (legendSelected) {
+            legendSelected.style.display = 'flex';
+        }
     } else {
-        summary.classList.remove('active');
+        // Afficher un message par défaut quand aucune date n'est sélectionnée
+        const datesEl = document.getElementById('summaryDates');
+        const nightsEl = document.getElementById('summaryNights');
+        const breakdownEl = document.getElementById('priceBreakdown');
+        const totalEl = document.getElementById('summaryTotal');
+
+        if (datesEl) {
+            datesEl.textContent = 'Choisir des dates pour voir les tarifs';
+            datesEl.style.textAlign = 'center';
+            datesEl.style.fontStyle = 'italic';
+        }
+
+        if (nightsEl) {
+            nightsEl.textContent = '';
+        }
+
+        if (breakdownEl) {
+            breakdownEl.innerHTML = '';
+        }
+
+        if (totalEl) {
+            totalEl.textContent = '';
+        }
+
+        // Masquer la légende "Période sélectionnée"
+        if (legendSelected) {
+            legendSelected.style.display = 'none';
+        }
     }
 }
 
@@ -475,4 +518,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Mettre à jour l'état des boutons de navigation
     updateNavigationButtons();
+
+    // Afficher le bloc de résumé dès le chargement
+    updateSummary();
 });
