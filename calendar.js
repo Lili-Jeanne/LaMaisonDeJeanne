@@ -228,6 +228,18 @@ function renderCalendar() {
 function selectDate(dateStr) {
     const clickedDate = new Date(dateStr);
 
+    // Si on reclique sur la date de début déjà sélectionnée → annuler la sélection
+    if (selectedStart && dateStr === selectedStart && !selectedEnd) {
+        clearSelection();
+        return;
+    }
+
+    // Si les deux dates sont déjà sélectionnées et on reclique sur l'une d'elles → annuler
+    if (selectedStart && selectedEnd && (dateStr === selectedStart || dateStr === selectedEnd)) {
+        clearSelection();
+        return;
+    }
+
     // Si aucune date n'est sélectionnée, ou si les deux dates sont déjà sélectionnées
     if (!selectedStart || (selectedStart && selectedEnd)) {
         selectedStart = dateStr;
@@ -238,10 +250,15 @@ function selectDate(dateStr) {
             // Vérifier qu'il n'y a pas de dates réservées entre les deux
             const hasBookedInBetween = checkBookedInRange(selectedStart, dateStr);
             if (hasBookedInBetween) {
-                alert('Il y a des dates réservées dans la période sélectionnée. Veuillez choisir une autre période.');
+                selectedStart = null;
+                selectedEnd = null;
+                renderCalendar();
+                updateSummary();
+                showCalendarError();
                 return;
             }
             selectedEnd = dateStr;
+            hideCalendarError();
         } else {
             // Si la date cliquée est avant la date de début, recommencer
             selectedStart = dateStr;
@@ -249,6 +266,41 @@ function selectDate(dateStr) {
         }
     }
 
+    renderCalendar();
+    updateSummary();
+}
+
+// Fonction pour masquer le message d'erreur
+function hideCalendarError() {
+    const errorEl = document.getElementById('calendarError');
+    if (!errorEl) return;
+    clearTimeout(showCalendarError._timer);
+    errorEl.style.display = 'none';
+}
+
+// Fonction pour afficher le message d'erreur dans le calendrier
+function showCalendarError() {
+    const errorEl = document.getElementById('calendarError');
+    if (!errorEl) return;
+
+    // Réinitialiser l'animation si déjà visible
+    errorEl.style.display = 'none';
+    // Forcer le reflow pour relancer l'animation
+    void errorEl.offsetWidth;
+    errorEl.style.display = 'flex';
+
+    // Masquer automatiquement après 5 secondes
+    clearTimeout(showCalendarError._timer);
+    showCalendarError._timer = setTimeout(() => {
+        errorEl.style.display = 'none';
+    }, 5000);
+}
+
+// Fonction pour annuler toute la sélection
+
+function clearSelection() {
+    selectedStart = null;
+    selectedEnd = null;
     renderCalendar();
     updateSummary();
 }
@@ -273,10 +325,16 @@ function checkBookedInRange(startDate, endDate) {
 function updateSummary() {
     const summary = document.getElementById('summary');
     const legendSelected = document.getElementById('legendSelected');
+    const clearContainer = document.getElementById('clearSelectionContainer');
     if (!summary) return;
 
     // Toujours afficher le bloc de résumé
     summary.classList.add('active');
+
+    // Afficher ou masquer le bouton d'annulation
+    if (clearContainer) {
+        clearContainer.style.display = selectedStart ? 'block' : 'none';
+    }
 
     if (selectedStart && selectedEnd) {
         const start = new Date(selectedStart);

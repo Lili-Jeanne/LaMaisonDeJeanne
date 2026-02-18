@@ -249,6 +249,69 @@
 }
 
 
+
+/* Message d'erreur calendrier */
+.calendar-error {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    background: #fff8f0;
+    border: 1px solid #f0a04b;
+    border-left: 4px solid #e07b1a;
+    border-radius: 8px;
+    padding: 10px 12px;
+    margin-bottom: 12px;
+    font-size: 0.8rem;
+    color: #7a4a10;
+    line-height: 1.4;
+    animation: fadeInError 0.3s ease;
+}
+
+.calendar-error-icon {
+    font-size: 1rem;
+    flex-shrink: 0;
+    margin-top: 1px;
+}
+
+@keyframes fadeInError {
+    from {
+        opacity: 0;
+        transform: translateY(-4px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Bouton annuler la sélection */
+
+.clear-selection-btn {
+    background: transparent;
+    color: var(--airbnb-gray);
+    border: 1px solid var(--airbnb-border);
+    border-radius: 20px;
+    padding: 5px 14px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.clear-selection-btn:hover {
+    background: #fff0f0;
+    border-color: #e74c3c;
+    color: #e74c3c;
+}
+
+.clear-selection-btn:active {
+    transform: scale(0.97);
+}
+
 /* Résumé de réservation - Style Airbnb */
 .summary-compact {
     background: white;

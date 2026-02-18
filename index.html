@@ -35,7 +35,7 @@
         <div class="logo">
             <div class="logo-icon">
                 <div class="house-icon">
-                    <a href="#"> <img src="assets/images/logo.svg" alt="logo"></a>
+                    <a href="#"> <img src="assets/images/logo.png" alt="logo"></a>
                 </div>
             </div>
         </div>
@@ -395,6 +395,13 @@
                                 <!-- Le calendrier sera généré par JavaScript -->
                             </div>
 
+                            <!-- Message d'erreur -->
+                            <div id="calendarError" class="calendar-error" style="display: none;">
+                                <span class="calendar-error-icon">⚠️</span>
+                                <span>Des dates réservées se trouvent dans la période sélectionnée. Veuillez choisir une
+                                    autre période.</span>
+                            </div>
+
                             <!-- Légende -->
                             <div class="legend-compact">
                                 <div class="legend-item-compact" id="legendSelected" style="display: none;">
@@ -405,6 +412,14 @@
                                     <span class="legend-number-booked">15</span>
                                     <span>Réservé</span>
                                 </div>
+                            </div>
+
+                            <!-- Bouton annuler la sélection -->
+                            <div id="clearSelectionContainer"
+                                style="display: none; margin-top: 8px; text-align: center;">
+                                <button id="clearSelectionBtn" onclick="clearSelection()" class="clear-selection-btn">
+                                    ✕ Annuler la sélection
+                                </button>
                             </div>
 
                             <!-- Résumé de la réservation -->
