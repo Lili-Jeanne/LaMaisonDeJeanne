@@ -1233,65 +1233,43 @@ p {
 /* Bouton de contact moderne */
 .contact-button-container {
   display: flex;
-  justify-content: flex-start;
+  justify-content: stretch;
   align-items: center;
   margin-top: 0;
-  padding: var(--spacing-lg) 0;
+  padding: var(--spacing-md) 0;
 }
 
 .contact-form-button {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 12px;
-  background: linear-gradient(135deg, var(--primary-blue), var(--accent-purple));
-  color: white;
-  padding: 18px 36px;
-  border-radius: var(--radius-xl);
-  text-decoration: none;
-  font-size: 1.1rem;
-  font-weight: 600;
-  box-shadow: var(--shadow-medium);
-  transition: all var(--transition-fast);
-  position: relative;
-  overflow: hidden;
-}
-
-.contact-form-button::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
+  justify-content: center;
   width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  transition: left 0.5s;
-}
-
-.contact-form-button:hover::before {
-  left: 100%;
+  gap: 10px;
+  background: #2C2C2C;
+  color: #fff;
+  padding: 14px 28px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  border: 1px solid #2C2C2C;
+  transition: background 0.2s ease, border-color 0.2s ease;
+  font-family: 'Roboto', sans-serif;
 }
 
 .contact-form-button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 15px 50px rgba(102, 126, 234, 0.4);
+  background: #444;
+  border-color: #444;
 }
 
 .contact-form-button:active {
-  transform: translateY(-1px);
+  background: #1a1a1a;
 }
 
 .button-icon,
 .arrow-icon {
   flex-shrink: 0;
-  transition: transform var(--transition-fast);
-}
-
-.contact-form-button:hover .arrow-icon {
-  transform: translateX(5px);
-}
-
-.contact-form-button:hover .button-icon {
-  transform: scale(1.1);
 }
 
 .custom-section7 {
@@ -1319,8 +1297,8 @@ p {
   }
 
   .contact-form-button {
-    padding: 15px 28px;
-    font-size: 1rem;
+    padding: 12px 22px;
+    font-size: 0.9rem;
   }
 
   .contact-button-container {
@@ -1353,17 +1331,17 @@ p {
    SECTION INFOS + CALENDRIER
    ===================================================== */
 .info-booking-section {
-  padding: var(--spacing-xxl) var(--spacing-lg);
+  padding: var(--spacing-xl) var(--spacing-md);
   background: var(--background-cream);
 }
 
 .info-booking-container {
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
 .info-column {
-  padding: var(--spacing-lg);
+  padding: 0;
 }
 
 /* Grille tarifs info */
@@ -1376,35 +1354,37 @@ p {
 
 .price-info-card {
   background: white;
-  border: 2px solid var(--primary-blue-light);
-  border-radius: var(--radius-md);
-  padding: var(--spacing-md);
+  border: 1px solid #e0d8cc;
+  border-radius: 10px;
+  padding: 14px 16px;
   text-align: center;
   transition: all var(--transition-fast);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
 }
 
 .price-info-card:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-light);
+  border-color: #c8bfb2;
 }
 
 .price-info-card .price-label {
-  font-size: 0.9rem;
-  color: var(--text-light);
-  margin-bottom: 8px;
+  font-size: 0.72rem;
+  color: #9a9a9a;
+  margin-bottom: 4px;
   font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
 }
 
 .price-info-card .price-amount {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: var(--primary-blue);
-  margin-bottom: 5px;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 4px;
 }
 
 .price-info-card .price-months {
-  font-size: 0.8rem;
-  color: #666;
+  font-size: 0.68rem;
+  color: #9a9a9a;
 }
 
 /* Container pour calendrier + tarifs côte à côte sur grand écran */
@@ -1419,10 +1399,11 @@ p {
 /* Calendrier compact */
 .calendar-compact {
   background: white;
-  border-radius: var(--radius-lg);
+  border-radius: 16px;
   padding: var(--spacing-lg);
-  box-shadow: var(--shadow-light);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
   width: 100%;
+  border: 1px solid #e0d8cc;
 }
 
 .calendar-title {
@@ -1442,21 +1423,26 @@ p {
 }
 
 .calendar-nav-btn-compact {
-  background: var(--primary-blue);
-  color: white;
+  background: transparent;
+  color: var(--text-dark);
   border: none;
-  padding: 8px 12px;
-  border-radius: var(--radius-sm);
+  padding: 4px 8px;
+  border-radius: 50%;
   cursor: pointer;
-  font-weight: bold;
+  font-weight: 400;
+  font-size: 1.1rem;
   transition: all var(--transition-fast);
-  min-width: 35px;
-  font-size: 1rem;
+  min-width: 28px;
+  min-height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.7;
 }
 
 .calendar-nav-btn-compact:hover {
-  background: var(--accent-purple);
-  transform: scale(1.05);
+  background: rgba(44, 44, 44, 0.06);
+  opacity: 1;
 }
 
 .month-year-display {
@@ -1477,10 +1463,12 @@ p {
 
 .day-header-compact {
   text-align: center;
-  font-weight: 600;
-  color: #666;
-  font-size: 0.75rem;
-  padding: 5px 0;
+  font-weight: 500;
+  color: #9a9a9a;
+  font-size: 0.7rem;
+  padding: 6px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .day-cell-compact {
@@ -1488,36 +1476,39 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 6px;
+  border-radius: 50%;
   cursor: pointer;
-  font-size: 0.85rem;
-  font-weight: 500;
+  font-size: 0.82rem;
+  font-weight: 400;
   color: var(--text-dark);
   transition: all .2s;
-  border: 1px solid transparent;
-  min-height: 35px;
+  border: 2px solid transparent;
+  min-height: 34px;
 }
 
 .day-cell-compact:hover:not(.booked):not(.empty) {
-  background: var(--primary-blue-alpha);
-  border-color: var(--primary-blue);
+  background: rgba(44, 44, 44, 0.06);
+  border-color: #e0d8cc;
 }
 
 .day-cell-compact.selected {
-  background: var(--primary-blue);
+  background: #2C2C2C;
   color: white;
-  font-weight: bold;
+  font-weight: 600;
+  border-radius: 50%;
 }
 
 .day-cell-compact.in-range {
-  background: var(--primary-blue-alpha);
+  background: rgba(44, 44, 44, 0.08);
+  border-radius: 0;
 }
 
 .day-cell-compact.booked {
-  background: #e8e8e8;
-  color: #999;
+  background: transparent;
+  color: #9a9a9a;
   text-decoration: line-through;
   cursor: not-allowed;
+  opacity: 0.45;
 }
 
 .day-cell-compact.empty {
@@ -1530,40 +1521,50 @@ p {
   margin-bottom: var(--spacing-md);
   flex-wrap: wrap;
   justify-content: center;
+  padding: 8px 10px;
+  background: #fdf6ec;
+  border-radius: 8px;
 }
 
 .legend-item-compact {
   display: flex;
   align-items: center;
   gap: 5px;
-  font-size: 0.8rem;
+  font-size: 0.72rem;
+  color: #9a9a9a;
 }
 
 .legend-color-compact {
-  width: 16px;
-  height: 16px;
-  border-radius: 4px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  border: 1.5px solid #e0d8cc;
 }
 
 .legend-color-compact.selected {
-  background: var(--primary-blue);
+  background: #2C2C2C;
+  border-color: #2C2C2C;
 }
 
 .legend-color-compact.in-range {
-  background: var(--primary-blue-alpha);
+  background: rgba(44, 44, 44, 0.08);
+  border-radius: 3px;
 }
 
 .legend-color-compact.booked {
-  background: #e8e8e8;
+  background: white;
+  opacity: 0.4;
 }
 
 .summary-compact {
-  background: linear-gradient(135deg, var(--primary-blue), var(--accent-purple));
-  color: white;
-  padding: var(--spacing-md);
-  border-radius: var(--radius-md);
+  background: #fff;
+  color: var(--text-dark);
+  padding: 14px 16px;
+  border-radius: 10px;
   display: none;
   margin-top: var(--spacing-md);
+  border: 1px solid #e0d8cc;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
 }
 
 .summary-compact.active {
@@ -1571,34 +1572,38 @@ p {
 }
 
 .summary-compact-title {
-  font-weight: bold;
-  margin-bottom: var(--spacing-xs);
-  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+  font-size: 0.9375rem;
+  color: var(--text-dark);
 }
 
 .summary-compact-dates {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   margin-bottom: var(--spacing-sm);
-  opacity: 0.9;
+  color: #9a9a9a;
+  font-style: italic;
 }
 
 .summary-compact-details {
-  margin-top: var(--spacing-sm);
+  margin-top: 8px;
 }
 
 .summary-compact-row {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 8px;
-  font-size: 0.95rem;
+  margin-bottom: 6px;
+  font-size: 0.82rem;
+  color: var(--text-dark);
 }
 
 .summary-compact-row.total {
-  font-size: 1.2rem;
-  font-weight: bold;
+  font-size: 0.95rem;
+  font-weight: 700;
   margin-top: var(--spacing-sm);
   padding-top: var(--spacing-sm);
-  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  border-top: 1px solid #e0d8cc;
+  color: var(--text-dark);
 }
 
 @media (max-width:1024px) {
@@ -1643,16 +1648,16 @@ p {
 
 /* Styles supplémentaires pour le calendrier */
 .day-cell-compact.today {
-  border: 2px solid var(--accent-purple);
-  font-weight: bold;
+  border: 1.5px solid #2C2C2C;
+  font-weight: 600;
 }
 
 .price-breakdown-item {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 5px;
-  font-size: 0.9rem;
-  opacity: 0.95;
+  margin-bottom: 4px;
+  font-size: 0.75rem;
+  color: #9a9a9a;
 }
 
 
