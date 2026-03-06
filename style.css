@@ -188,7 +188,7 @@ p {
   border-radius: var(--radius-xl);
   margin: var(--spacing-md) auto;
   max-width: 1200px;
-  max-height: 120px;
+  max-height: 80px;
   padding: var(--spacing-sm) var(--spacing-lg);
   box-shadow: var(--shadow-light);
   display: flex;
@@ -226,8 +226,8 @@ p {
 }
 
 .logo-icon img {
-  width: 150px;
-  height: 150px;
+  width: 120px;
+  height: 120px;
   display: block;
   padding: var(--spacing-xs);
 }
