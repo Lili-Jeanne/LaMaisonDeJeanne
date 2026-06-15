@@ -1851,3 +1851,116 @@ input[type="button"]:hover,
 input[type="submit"]:hover {
   cursor: pointer
 }
+
+/* =====================================================
+   BANDEAU PROMOTIONNEL (PROMO BANNER)
+   ===================================================== */
+:root {
+  --promo-banner-height: 48px;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --promo-banner-height: 64px;
+  }
+}
+
+.promo-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--promo-banner-height);
+  background: linear-gradient(135deg, #667eea 0%, #86c1fc 100%);
+  color: #ffffff;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 40px 0 15px;
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.15);
+  font-family: 'Roboto', sans-serif;
+  font-size: clamp(0.8rem, 2.2vw, 0.95rem);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.promo-banner-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  text-align: center;
+  width: 100%;
+}
+
+.promo-badge {
+  background-color: #e74c3c;
+  color: #ffffff;
+  padding: 2px 8px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  border-radius: 4px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+.promo-text {
+  font-weight: 400;
+}
+
+.promo-text strong {
+  font-weight: 700;
+  color: #fff275;
+}
+
+.promo-cta {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 700;
+  border-bottom: 2px solid #fff275;
+  padding-bottom: 1px;
+  margin-left: 5px;
+  transition: opacity 0.2s ease, border-color 0.2s ease;
+}
+
+.promo-cta:hover {
+  opacity: 0.95;
+  border-color: #ffffff;
+}
+
+.promo-close-btn {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 1.6rem;
+  cursor: pointer;
+  line-height: 1;
+  opacity: 0.75;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+}
+
+.promo-close-btn:hover {
+  opacity: 1;
+  transform: translateY(-50%) scale(1.15);
+}
+
+/* Ajustement du header quand le bandeau est visible */
+body.has-promo-banner .header {
+  top: var(--promo-banner-height);
+}
+
+/* Assurer que le menu mobile s'affiche au-dessus du bandeau */
+.mobile-nav {
+  z-index: 20000;
+}

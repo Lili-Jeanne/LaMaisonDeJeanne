@@ -480,3 +480,71 @@
     padding-bottom: 0;
     text-align: left;
 }
+
+/* Styles pour les promotions et réductions */
+.price-breakdown-item.promo-discount {
+    color: #2e7d32; /* Vert foncé pour la promo */
+    font-weight: 600;
+}
+
+/* Carte promotionnelle dans la grille des tarifs */
+.price-info-card.promo-card {
+    background: linear-gradient(135deg, #fdf6ec 0%, #fff3e0 100%);
+    border: 2px dashed #e67e22;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.price-info-card.promo-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(230, 126, 34, 0.15);
+    border-color: #d35400;
+}
+
+.promo-card-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #e67e22;
+    color: white;
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.price-amount-promo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+.price-amount-promo .old-price {
+    font-size: 1.1rem;
+    color: var(--cal-text-light);
+    text-decoration: line-through;
+}
+
+.price-amount-promo .new-price {
+    font-size: 1.55rem;
+    font-weight: 700;
+    color: #e67e22;
+}
+
+.price-amount-promo .per-night {
+    font-size: 0.75rem;
+    color: var(--cal-text-light);
+}
+
+.promo-card-desc {
+    font-size: 0.72rem;
+    color: #e67e22;
+    font-weight: 600;
+    margin-top: 4px;
+}

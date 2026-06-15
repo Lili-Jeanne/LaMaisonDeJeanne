@@ -16,6 +16,16 @@
 </head>
 
 <body>
+    <!-- Bandeau Promotionnel -->
+    <div class="promo-banner" id="promoBanner">
+        <div class="promo-banner-content">
+            <span class="promo-badge">PROMO</span>
+            <span class="promo-text">Profitez de <strong>-10% de réduction</strong> sur votre séjour du <strong>27 juin au 3 juillet 2026</strong> !</span>
+            <a href="#infos_pratiques" class="promo-cta">Réserver</a>
+        </div>
+        <button class="promo-close-btn" id="closePromoBanner" aria-label="Fermer le bandeau">&times;</button>
+    </div>
+
     <div class="mobile-nav" id="mobileNav">
         <a href="#section1" class="mobile-nav-item">GÎTE</a>
         <a href="#table_hote" class="mobile-nav-item">TABLE D'HÔTE</a>
@@ -459,6 +469,18 @@
                                 <div class="price-amount">120€</div>
                             </div>
 
+                            <!-- Carte promotionnelle -->
+                            <div class="price-info-card promo-card">
+                                <span class="promo-card-badge">Promo</span>
+                                <div class="price-label">Du 27 Juin au 3 Juillet</div>
+                                <div class="price-amount-promo">
+                                    <span class="old-price">110€</span>
+                                    <span class="new-price">99€</span>
+                                    <span class="per-night">/ nuit</span>
+                                </div>
+                                <div class="promo-card-desc">-10% de réduction automatique</div>
+                            </div>
+
                             <!-- Bouton de contact -->
                             <div class="contact-button-container">
                                 <a href="https://tally.so/r/44r1BB" target="_blank" class="contact-form-button">
@@ -474,6 +496,29 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+            // Gestion du bandeau promotionnel
+            const promoBanner = document.getElementById('promoBanner');
+            const closePromoBanner = document.getElementById('closePromoBanner');
+            
+            if (sessionStorage.getItem('promoBannerDismissed') === 'true') {
+                if (promoBanner) promoBanner.style.display = 'none';
+                document.body.classList.remove('has-promo-banner');
+            } else {
+                document.body.classList.add('has-promo-banner');
+            }
+
+            if (closePromoBanner && promoBanner) {
+                closePromoBanner.addEventListener('click', function () {
+                    promoBanner.style.transform = 'translateY(-100%)';
+                    promoBanner.style.opacity = '0';
+                    setTimeout(() => {
+                        promoBanner.style.display = 'none';
+                        document.body.classList.remove('has-promo-banner');
+                    }, 300);
+                    sessionStorage.setItem('promoBannerDismissed', 'true');
+                });
+            }
+
             const burgerMenu = document.getElementById('burgerMenu');
             const mobileNav = document.getElementById('mobileNav');
 

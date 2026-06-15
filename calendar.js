@@ -345,6 +345,12 @@ function updateSummary() {
         let totalPrice = 0;
         const current = new Date(start);
         const priceBreakdown = {};
+        let totalDiscount = 0;
+        let discountNights = 0;
+
+        // Période promotionnelle : 27 juin au 3 juillet 2026 (les nuits du 27 juin au 2 juillet inclus)
+        const promoStart = new Date(2026, 5, 27); // 27 Juin (mois indexé à partir de 0)
+        const promoEnd = new Date(2026, 6, 3);    // 3 Juillet
 
         while (current < end) {
             const season = getSeason(current);
@@ -360,6 +366,13 @@ function updateSummary() {
                 };
             }
             priceBreakdown[season].nights++;
+
+            // Vérifier si la nuit actuelle est dans la période promotionnelle
+            const nightDate = new Date(current.getFullYear(), current.getMonth(), current.getDate());
+            if (nightDate >= promoStart && nightDate < promoEnd) {
+                totalDiscount += price * 0.10; // Réduction de 10%
+                discountNights++;
+            }
 
             current.setDate(current.getDate() + 1);
         }
@@ -386,6 +399,16 @@ function updateSummary() {
                     <span>${data.nights * data.price}€</span>
                 </div>`;
             }
+
+            // Ajouter la ligne de réduction s'il y a lieu
+            if (discountNights > 0) {
+                const roundedDiscount = Math.round(totalDiscount);
+                breakdownHTML += `<div class="price-breakdown-item promo-discount">
+                    <span>🎉 Réduction Promo -10% (${discountNights} nuit${discountNights > 1 ? 's' : ''})</span>
+                    <span>-${roundedDiscount}€</span>
+                </div>`;
+            }
+
             // Ajouter les frais de ménage
             breakdownHTML += `<div class="price-breakdown-item">
                 <span>Frais de ménage et linge de lit</span>
@@ -394,9 +417,9 @@ function updateSummary() {
             breakdownEl.innerHTML = breakdownHTML;
         }
 
-        // Ajouter les frais de ménage au total
+        // Ajouter les frais de ménage au total et soustraire la réduction
         const cleaningFee = 80;
-        const finalTotal = totalPrice + cleaningFee;
+        const finalTotal = totalPrice + cleaningFee - Math.round(totalDiscount);
 
         if (totalEl) {
             totalEl.textContent = `${finalTotal}€`;
