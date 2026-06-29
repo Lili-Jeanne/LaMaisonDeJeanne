@@ -1,19 +1,9 @@
 {
   "reservations": [
     {
-      "startDate": "2026-05-10",
-      "endDate": "2026-05-31",
-      "note": "Réservation existante mai"
-    },
-    {
-      "startDate": "2026-06-07",
-      "endDate": "2026-06-12",
-      "note": "Réservation existante juin à confirmer"
-    },
-    {
-      "startDate": "2026-06-20",
-      "endDate": "2026-06-26",
-      "note": "Réservation existante juin"
+      "startDate": "2026-07-03",
+      "endDate": "2026-07-05",
+      "note": "Réservation existante juillet"
     },
     {
       "startDate": "2026-07-09",
@@ -24,6 +14,11 @@
       "startDate": "2026-08-22",
       "endDate": "2026-08-29",
       "note": "Réservation existante"
+    },
+    {
+      "startDate": "2026-08-30",
+      "endDate": "2026-09-02",
+      "note": "Réservation airbnb"
     }
   ]
 }
